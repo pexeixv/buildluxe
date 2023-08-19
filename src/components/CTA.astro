@@ -1,8 +1,19 @@
 ---
+import { getImage, Image } from "astro:assets";
 import Button from "@components/Button.astro";
+import contact from "@assets/contact.jpg";
+const Contact = await getImage({
+  src: contact,
+  format: "avif",
+  height: 400,
+  width: 800,
+});
 ---
 
-<section class="bg-black text-white">
+<section
+  class="bg-cover bg-no-repeat bg-left-bottom bg-black text-white backdrop-blur-sm bg-opacity-20"
+  style=`background-image:url(${Contact.src})`
+>
   <div class="container mx-auto px-5 py-10 lg:py-20">
     <div class="flex max-lg:flex-col gap-4 lg:gap-28">
       <h2 class="uppercase">

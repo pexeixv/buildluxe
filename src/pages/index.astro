@@ -2,54 +2,48 @@
 import { getImage, Image } from "astro:assets";
 import Button from "@components/Button.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
-import heroSrc from "@assets/hero.jpg";
-import house from "@assets/house.jpg";
-const hero = await getImage({ src: heroSrc, format: "avif" });
-import landServices from "@assets/land-services.jpg";
-const LandServices = await getImage({ src: landServices, format: "avif" });
+import heroSrc from "@assets/hero-image.jpg";
+import about from "@assets/about.jpg";
+const hero = await getImage({ src: heroSrc, format: "avif", width: 1600, height: 900 });
+import placeholder from "@assets/placeholder.jpg";
+const Placeholder = await getImage({ src: placeholder, format: "avif" });
+import landService from "@assets/land-service.jpg";
+const LandService = await getImage({ src: landService, format: "avif", height: 400, width: 800});
+import architecturalDesign from '@assets/architectural-design.webp'
+const ArchitecturalDesign = await getImage({ src: architecturalDesign, format: "avif", height: 400, width: 800});
+import constructionService from '@assets/construction-service.jpg'
+const ConstructionService = await getImage({ src: constructionService, format: "avif", height: 400, width: 800});
+import portugueseHouse from '@assets/portuguese-house.jpg'
+const PortugueseHouse = await getImage({ src: portugueseHouse, format: "avif", height: 400, width: 800});
+import livingRoom from '@assets/living-room.jpg'
+const LivingRoom = await getImage({ src: livingRoom, format: "avif", height: 400, width: 800});
 import CTA from "@components/CTA.astro";
 import Partners from "@components/Partners.astro";
 
 const services = [
   {
-    image: LandServices,
-    title: "Land Services",
-    description:
-      "Buying land in Goa can be a daunting task, but our land acquisition team can take care of everything for you. From finding the ideal plot to advising on the different purchase options.",
-    cta: {
-      label: "Explore Land in Goa",
-      href: "#",
-    },
-  },
-  {
-    image: LandServices,
-    title: "Architectural Design",
-    description:
-      "Our architects can create a bespoke design based on your criteria. From a budget 1-bedroom villa to a luxury multi-villa complex, we can create the ideal design.",
-    cta: {
-      label: "Architectural Services",
-      href: "#",
-    },
-  },
-  {
-    image: LandServices,
-    title: "Construction Services",
+    image: ConstructionService,
+    title: "Construction Service",
     description:
       "Our team of construction specialists will build your new villa to the highest of international standards. Inspections are carried out on every aspect of the build to ensure quality.",
-    cta: {
-      label: "Build in Goa",
-      href: "#",
-    },
   },
   {
-    image: LandServices,
-    title: "Property Management",
+    image: ArchitecturalDesign,
+    title: "Architectural Design",
     description:
-      "Ongoing maintenance of every aspect of your property, from cleaning, cooking and gardening services to successful holiday rental management.",
-    cta: {
-      label: "Villa management",
-      href: "#",
-    },
+      "We have an excellent array of artistic , outstanding architectural firms we work alongside with .Get in touch to design and craft your dream home.",
+  },
+  {
+    image: LandService,
+    title: "Land services",
+    description:
+      "Buying land in Goa can be a daunting task, but our land acquisition team can take care of everything for you. From finding the ideal plot to advising on the different purchase options.",
+  },
+  {
+    image: PortugueseHouse,
+    title: "Restoration of heritage homes",
+    description:
+      "Preserving the key heritage elements, with skilled architects and designers who specialize in heritage restoration and modern luxury design. Retaining the essence of the original Portuguese architecture while seamlessly incorporating contemporary luxury elements. Integrating eco-friendly features and modern amenities without compromising the heritage integrity.",
   },
 ];
 
@@ -99,20 +93,15 @@ const testimonials = [
     <div
       class="container mx-auto px-5 py-10 lg:py-20 grid lg:grid-cols-2 max-w-4xl gap-16"
     >
-      <Image src={house} alt="house" height={600} />
+      <Image src={about} alt="villa" height={600} width={400} />
       <div class="flex flex-col justify-center">
         <h2 class="uppercase">
           <p class="font-thin">About</p>
           <p class="font-black">Buildluxe</p>
         </h2>
         <p class="mt-8">
-          Buildluxe is a Goa architecture & construction company eagerly
-          bringing dream houses and high-end projects into reality. Driven by
-          commitment, trust and vision on enabling perfect houses for everyone,
-          we are delighted to help. From our widely-popular 1-bedroom hut villas
-          to 5-star resorts, no project is too large or too small.
+          Buildluxe is a Goan architecture & construction company eagerly bringing dream houses and high-end projects into reality. Driven by commitment, trust and vision on enabling perfect houses for everyone, we are delighted to help. From our widely-popular luxury villas and residential spaces to heritage constructions no project is too large or too small. Our Goal is to craft a sustainable, nature oriented lifestyle, with distinctive art oriented design presence.
         </p>
-        <Button classes="mt-8 lg:mt-16" link="/about">Explore More</Button>
       </div>
     </div>
   </section>
@@ -123,14 +112,13 @@ const testimonials = [
         <span class="font-thin">Our</span>
         <span class="font-black">Services</span>
       </h2>
-      <div class="mt-12 grid grid-cols-2">
+      <div class="mt-12 grid grid-cols-2" style="grid-auto-rows: 1fr;">
         {
           services.map(service=>(
             <div class="group bg-cover bg-no-repeat bg-center text-white text-center" style=`background-image:url('${service.image.src}')`>
-              <div class="w-full h-full bg-black/30 flex flex-col items-center justify-center p-16 lg:opacity-0 lg:pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-300">
+              <div class="w-full h-full bg-black/50 flex flex-col items-center justify-center p-16 lg:opacity-0 lg:pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 delay-100">
                 <h3 class="first">{service.title}</h3>
                 <p class="max-lg:hidden mt-4 text-lg max-w-md">{service.description}</p>
-                <Button classes="max-lg:hidden mt-8" variant="secondary" link={service.cta.href}>{service.cta.label}</Button>
               </div>
             </div>
           ))
@@ -139,52 +127,21 @@ const testimonials = [
     </div>
   </section>
 
-  <section>
-    <div class="container mx-auto px-5 py-10 lg:py-0 grid lg:grid-cols-2">
-      <div class="flex h-full flex-col justify-center">
-        <h2 class="uppercase">
-          <p class="font-thin">Invest in our</p>
-          <p class="font-black">new developments</p>
-        </h2>
-        <p class="text-lg mt-4 max-w-xl">Goa property development is a perfect choice for investment. Design and build your dream villa in the tropical paradise of Goa. Begin with us now.
-        </p>
-        <Button classes="mt-8" link="#">Explore Goa Developments</Button>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-lg:mt-12 lg:p-4">
-        {[...Array(12).keys()].map(i=>(
-          <div>
-            <img class="aspect-square object-cover" src="https://placehold.co/400x600" alt="">
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  
 
-<section class="bg-cover bg-no-repeat bg-center" style=`background-image:url('${LandServices.src}')`>
-  <div class="w-full h-full bg-black/30">
-    <div class="container mx-auto px-5 py-10 lg:py-20 flex flex-col items-center justify-center text-center text-white max-w-2xl">
-      <h2 class="uppercase">
-        <p class="font-thin">Find land in Goa</p>
-        <p class="font-black mt-1">For sale</p>
-      </h2>
-      <p class="mt-8">Let our team help you find the perfect plot of land for sale in Goa for your exceptional property development of stunning villa, resort or commercial project. Search our land listings here to find the perfect land for your needs and budget.
-      </p>  
-      <Button variant="secondary" classes="mt-8" link="#">Explore Land Listings</Button>
-    </div>
-  </div>
-</section>
+
 
 <section>
-  <div class="container mx-auto px-5 py-12">
+  <div class="container mx-auto px-5 py-20">
     <h2 class="uppercase text-center">
-      <p class="font-thin">Our popular</p>
-      <p class="font-black">villa packages</p>
+      <p class="font-thin">Our awaited</p>
+      <p class="font-black">ongoing projects</p>
       </h2>
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-4">
       {
         [...Array(4).keys()].map(i=>(
-          <div class="bg-cover bg-no-repeat bg-center" style={`background-image:url(${LandServices.src});`}>
+          <div class="bg-cover bg-no-repeat bg-center" style={`background-image:url(${Placeholder.src});`}>
             <div class="w-full h-full bg-black/30 text-white p-4 lg:p-8">
               <h3 class="uppercase">The Hut</h3>
               <p class="text-sm uppercase mt-4">starting from</p>
@@ -220,7 +177,7 @@ const testimonials = [
   </div>
 </section>
 
-<section class="bg-cover bg-no-repeat bg-center" style=`background-image:url('${LandServices.src}')`>
+<section class="bg-cover bg-no-repeat bg-center backdrop-blur-3xl" style=`background-image:url('${LivingRoom.src}')`>
   <div class="w-full h-full bg-black/30">
     <div class="container mx-auto px-5 py-10 lg:py-20 flex flex-col items-center justify-center text-center text-white max-w-2xl">
       <h2 class="uppercase">
@@ -244,9 +201,10 @@ const testimonials = [
           testimonials.map(testimonial=>(
             <div class="bg-white shadow p-8 flex flex-col">
                 <q class="text-justify">{testimonial.quote}</q>
-                <div class="flex gap-4 h-full items-end flex-1 pt-4">
-                  <img class="h-16" src={testimonial.photo} alt="">
-                  <h3 class="text-xl">{testimonial.name}</h3>
+                <div class="flex h-full items-end flex-1 pt-4">
+                  <div class="flex items-center gap-4 ">
+                    <img class="h-16" src={testimonial.photo} alt="">
+                  <h3 class="text-xl">{testimonial.name}</h3></div>
                 </div>
               </div>
           ))

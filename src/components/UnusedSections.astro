@@ -1,0 +1,63 @@
+---
+import { getImage, Image } from "astro:assets";
+import Button from "@components/Button.astro";
+import landServices from "@assets/land-services.jpg";
+const LandServices = await getImage({ src: landServices, format: "avif" });
+---
+
+<section>
+  <div class="container mx-auto px-5 py-10 lg:py-0 grid lg:grid-cols-2">
+    <div class="flex h-full flex-col justify-center">
+      <h2 class="uppercase">
+        <p class="font-thin">Invest in our</p>
+        <p class="font-black">new developments</p>
+      </h2>
+      <p class="text-lg mt-4 max-w-xl">
+        Goa property development is a perfect choice for investment. Design and
+        build your dream villa in the tropical paradise of Goa. Begin with us
+        now.
+      </p>
+      <Button classes="mt-8" link="#">Explore Goa Developments</Button>
+    </div>
+    <div
+      class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-lg:mt-12 lg:p-4"
+    >
+      {
+        [...Array(12).keys()].map((i) => (
+          <div>
+            <img
+              class="aspect-square object-cover"
+              src="https://placehold.co/400x600"
+              alt=""
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<section
+  class="bg-cover bg-no-repeat bg-center"
+  style=`background-image:url('${LandServices.src}')`
+>
+  <div class="w-full h-full bg-black/30">
+    <div
+      class="container mx-auto px-5 py-10 lg:py-20 flex flex-col items-center justify-center text-center text-white max-w-2xl"
+    >
+      <h2 class="uppercase">
+        <p class="font-thin">Find land in Goa</p>
+        <p class="font-black mt-1">For sale</p>
+      </h2>
+      <p class="mt-8">
+        Let our team help you find the perfect plot of land for sale in Goa for
+        your exceptional property development of stunning villa, resort or
+        commercial project. Search our land listings here to find the perfect
+        land for your needs and budget.
+      </p>
+      <Button variant="secondary" classes="mt-8" link="#">
+        Explore Land Listings
+      </Button>
+    </div>
+  </div>
+</section>
