@@ -4,19 +4,19 @@ import Button from "@components/Button.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import heroSrc from "@assets/hero-image.jpg";
 import about from "@assets/about.jpg";
-const hero = await getImage({ src: heroSrc, format: "avif", width: 1600, height: 900 });
+const hero = await getImage({ src: heroSrc, format: "webp", width: 1600, height: 900 });
 import placeholder from "@assets/placeholder.jpg";
-const Placeholder = await getImage({ src: placeholder, format: "avif" });
+const Placeholder = await getImage({ src: placeholder, format: "webp" });
 import landService from "@assets/land-service.jpg";
-const LandService = await getImage({ src: landService, format: "avif", height: 400, width: 800});
+const LandService = await getImage({ src: landService, format: "webp", height: 400, width: 800});
 import architecturalDesign from '@assets/architectural-design.webp'
-const ArchitecturalDesign = await getImage({ src: architecturalDesign, format: "avif", height: 400, width: 800});
+const ArchitecturalDesign = await getImage({ src: architecturalDesign, format: "webp", height: 400, width: 800});
 import constructionService from '@assets/construction-service.jpg'
-const ConstructionService = await getImage({ src: constructionService, format: "avif", height: 400, width: 800});
+const ConstructionService = await getImage({ src: constructionService, format: "webp", height: 400, width: 800});
 import portugueseHouse from '@assets/portuguese-house.jpg'
-const PortugueseHouse = await getImage({ src: portugueseHouse, format: "avif", height: 400, width: 800});
+const PortugueseHouse = await getImage({ src: portugueseHouse, format: "webp", height: 400, width: 800});
 import livingRoom from '@assets/living-room.jpg'
-const LivingRoom = await getImage({ src: livingRoom, format: "avif", height: 400, width: 800});
+const LivingRoom = await getImage({ src: livingRoom, format: "webp", height: 400, width: 800});
 import CTA from "@components/CTA.astro";
 import Partners from "@components/Partners.astro";
 
