@@ -2,15 +2,15 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Button from "@components/Button.astro";
 import { getImage, Image } from "astro:assets";
-import landServices from "@assets/land-services.jpg";
 import Address from "@components/Address.astro";
-const LandServices = await getImage({ src: landServices, format: "avif" });
+import placeholder from "@assets/placeholder.jpg";
+const Placeholder = await getImage({ src: placeholder, format: "avif" });
 ---
 
 <BaseLayout title="Contact - Buildluxe">
   <section
     class="bg-cover bg-no-repeat bg-center relative"
-    style=`background-image:url(${LandServices.src})`
+    style=`background-image:url(${Placeholder.src})`
   >
     <div class="h-full w-full bg-black/30">
       <div

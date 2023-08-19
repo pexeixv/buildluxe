@@ -1,8 +1,8 @@
 ---
 import { getImage, Image } from "astro:assets";
 import Button from "@components/Button.astro";
-import landServices from "@assets/land-services.jpg";
-const LandServices = await getImage({ src: landServices, format: "avif" });
+import placeholder from "@assets/placeholder.jpg";
+const Placeholder = await getImage({ src: placeholder, format: "avif" });
 ---
 
 <section>
@@ -39,7 +39,7 @@ const LandServices = await getImage({ src: landServices, format: "avif" });
 
 <section
   class="bg-cover bg-no-repeat bg-center"
-  style=`background-image:url('${LandServices.src}')`
+  style=`background-image:url('${Placeholder.src}')`
 >
   <div class="w-full h-full bg-black/30">
     <div
