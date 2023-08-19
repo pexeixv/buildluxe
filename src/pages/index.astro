@@ -1,15 +1,263 @@
 ---
+import { getImage, Image } from "astro:assets";
+import Button from "@components/Button.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import heroSrc from "@assets/hero.jpg";
+import house from "@assets/house.jpg";
+const hero = await getImage({ src: heroSrc, format: "avif" });
+import landServices from "@assets/land-services.jpg";
+const LandServices = await getImage({ src: landServices, format: "avif" });
+import CTA from "@components/CTA.astro";
+import Partners from "@components/Partners.astro";
+
+const services = [
+  {
+    image: LandServices,
+    title: "Land Services",
+    description:
+      "Buying land in Goa can be a daunting task, but our land acquisition team can take care of everything for you. From finding the ideal plot to advising on the different purchase options.",
+    cta: {
+      label: "Explore Land in Goa",
+      href: "#",
+    },
+  },
+  {
+    image: LandServices,
+    title: "Architectural Design",
+    description:
+      "Our architects can create a bespoke design based on your criteria. From a budget 1-bedroom villa to a luxury multi-villa complex, we can create the ideal design.",
+    cta: {
+      label: "Architectural Services",
+      href: "#",
+    },
+  },
+  {
+    image: LandServices,
+    title: "Construction Services",
+    description:
+      "Our team of construction specialists will build your new villa to the highest of international standards. Inspections are carried out on every aspect of the build to ensure quality.",
+    cta: {
+      label: "Build in Goa",
+      href: "#",
+    },
+  },
+  {
+    image: LandServices,
+    title: "Property Management",
+    description:
+      "Ongoing maintenance of every aspect of your property, from cleaning, cooking and gardening services to successful holiday rental management.",
+    cta: {
+      label: "Villa management",
+      href: "#",
+    },
+  },
+];
+
+const testimonials = [
+  {
+    name: 'Gerald',
+    photo: 'https://placehold.co/200x200',
+    quote: 'I have now built 2 villas with Buildluxe, the first back in 2014 and the second in late 2019/20. The first villa was mostly built as a holiday rental investment, but also as somewhere I could take my family on our annual vacation. After the initial villa was paid off, I decided to reinvest into a second build. I would happily recommend Buildluxe to anyone looking to build in Goa.'
+  },
+    {
+    name: 'Fabio',
+    photo: 'https://placehold.co/200x200',
+    quote: 'I had always wanted to build in Goa, and Buildluxe helped with the entire process. I found their prices more affordable than many other builders in Goa, and I was able to view the workmanship at some of their newly completed builds. I am extremely happy with my villa and it is performing great as a holiday rental.'
+  },
+    {
+    name: 'Tony',
+    photo: 'https://placehold.co/200x200',
+    quote: 'I have just seen the villa for the first time since the renovations were completed and I am overwhelmed with the transformation. Your team has worked their magic and transformed this place from a rundown property into a luxury estate. I want to live here myself now, not rent it. I can’t wait to show Julia, she is going to love it!'
+  }  
+]
+
+
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Buildluxe">
+  <section
+    class="bg-cover bg-no-repeat bg-center relative"
+    style=`background-image:url(${hero.src})`
+  >
+    <div class="w-full h-full bg-black/30">
+      <div
+        class="relative container mx-auto px-5 py-10 lg:py-20 min-h-screen grid place-items-center"
+      >
+        <h1 class="text-white text-balance text-center uppercase drop-shadow-4xl">
+          <p class="font-thin">Designing your Dream</p>
+          <p class="font-black">Creating Beautiful Villas</p>
+        </h1>
+      </div>
+    </div>
+    <div
+      class="absolute w-full h-40 bottom-0 left-0 bg-gradient-to-b from-transparent to-white"
+    >
+    </div>
+  </section>
+
+  <section>
+    <div
+      class="container mx-auto px-5 py-10 lg:py-20 grid lg:grid-cols-2 max-w-4xl gap-16"
+    >
+      <Image src={house} alt="house" height={600} />
+      <div class="flex flex-col justify-center">
+        <h2 class="uppercase">
+          <p class="font-thin">About</p>
+          <p class="font-black">Buildluxe</p>
+        </h2>
+        <p class="mt-8">
+          Buildluxe is a Goa architecture & construction company eagerly
+          bringing dream houses and high-end projects into reality. Driven by
+          commitment, trust and vision on enabling perfect houses for everyone,
+          we are delighted to help. From our widely-popular 1-bedroom hut villas
+          to 5-star resorts, no project is too large or too small.
+        </p>
+        <Button classes="mt-8 lg:mt-16" link="/about">Explore More</Button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="mx-auto pt-10 lg:pt-20">
+      <h2 class="uppercase text-center">
+        <span class="font-thin">Our</span>
+        <span class="font-black">Services</span>
+      </h2>
+      <div class="mt-12 grid grid-cols-2">
+        {
+          services.map(service=>(
+            <div class="group bg-cover bg-no-repeat bg-center text-white text-center" style=`background-image:url('${service.image.src}')`>
+              <div class="w-full h-full bg-black/30 flex flex-col items-center justify-center p-16 lg:opacity-0 lg:pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-300">
+                <h3 class="first">{service.title}</h3>
+                <p class="max-lg:hidden mt-4 text-lg max-w-md">{service.description}</p>
+                <Button classes="max-lg:hidden mt-8" variant="secondary" link={service.cta.href}>{service.cta.label}</Button>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container mx-auto px-5 py-10 lg:py-0 grid lg:grid-cols-2">
+      <div class="flex h-full flex-col justify-center">
+        <h2 class="uppercase">
+          <p class="font-thin">Invest in our</p>
+          <p class="font-black">new developments</p>
+        </h2>
+        <p class="text-lg mt-4 max-w-xl">Goa property development is a perfect choice for investment. Design and build your dream villa in the tropical paradise of Goa. Begin with us now.
+        </p>
+        <Button classes="mt-8" link="#">Explore Goa Developments</Button>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-lg:mt-12 lg:p-4">
+        {[...Array(12).keys()].map(i=>(
+          <div>
+            <img class="aspect-square object-cover" src="https://placehold.co/400x600" alt="">
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+<section class="bg-cover bg-no-repeat bg-center" style=`background-image:url('${LandServices.src}')`>
+  <div class="w-full h-full bg-black/30">
+    <div class="container mx-auto px-5 py-10 lg:py-20 flex flex-col items-center justify-center text-center text-white max-w-2xl">
+      <h2 class="uppercase">
+        <p class="font-thin">Find land in Goa</p>
+        <p class="font-black mt-1">For sale</p>
+      </h2>
+      <p class="mt-8">Let our team help you find the perfect plot of land for sale in Goa for your exceptional property development of stunning villa, resort or commercial project. Search our land listings here to find the perfect land for your needs and budget.
+      </p>  
+      <Button variant="secondary" classes="mt-8" link="#">Explore Land Listings</Button>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container mx-auto px-5 py-12">
+    <h2 class="uppercase text-center">
+      <p class="font-thin">Our popular</p>
+      <p class="font-black">villa packages</p>
+      </h2>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4">
+      {
+        [...Array(4).keys()].map(i=>(
+          <div class="bg-cover bg-no-repeat bg-center" style={`background-image:url(${LandServices.src});`}>
+            <div class="w-full h-full bg-black/30 text-white p-4 lg:p-8">
+              <h3 class="uppercase">The Hut</h3>
+              <p class="text-sm uppercase mt-4">starting from</p>
+              <p class="text-xl mt-1 font-bold">₹2cr</p>
+              <ul class="list-disc pl-4 lg:pl-8 mt-4">
+                <li>Modern Goa Design</li>
+                <li>Bespoke Hut</li>
+                <li>1 Bedroom</li>
+                <li>1 Bathroom</li>
+                <li>Private Pool</li>
+                <li>100 sqm build area</li>
+                <li>Parking</li>
+              </ul>
+              <Button classes="mt-8" variant="secondary" link="#">Get Features & Benefits</Button>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+</section>
+
+
+<section>
+  <div class="container mx-auto px-5 py-10 lg:py-20 flex max-lg:items-center max-lg:flex-col max-lg:text-center lg:grid lg:grid-cols-2 max-w-7xl lg:gap-16">
+    <h2 class=" uppercase">
+      <p class="font-thin">Find out more</p>
+      <p class="font-black">let's chat</p>
+    </h2>
+    <div>
+      <p class="text-lg mt-4 max-w-xl">Goa property development is a perfect choice for investment. Design and build your dream villa in the tropical paradise of Goa. Begin with us now.
+    </p>
+    <Button classes="mt-8" link="#">Explore Goa Developments</Button></div>
+  </div>
+</section>
+
+<section class="bg-cover bg-no-repeat bg-center" style=`background-image:url('${LandServices.src}')`>
+  <div class="w-full h-full bg-black/30">
+    <div class="container mx-auto px-5 py-10 lg:py-20 flex flex-col items-center justify-center text-center text-white max-w-2xl">
+      <h2 class="uppercase">
+        <p class="font-thin">Schedule</p>
+        <p class="font-black mt-1">a free consultation</p>
+      </h2>
+      <Button variant="secondary" classes="mt-8" link="#">Enquire Now</Button>
+    </div>
+  </div>
+</section>
+
+
+<section class="bg-neutral-100">
+  <div class="container mx-auto px-5 py-10 lg:py-20">
+    <h2 class="uppercase">
+        <p class="font-thin">What our clients</p>
+        <p class="font-black mt-1">say about us</p>
+      </h2>
+      <div class="mt-12 grid lg:grid-cols-3 gap-8">
+        {
+          testimonials.map(testimonial=>(
+            <div class="bg-white shadow p-8 flex flex-col">
+                <q class="text-justify">{testimonial.quote}</q>
+                <div class="flex gap-4 h-full items-end flex-1 pt-4">
+                  <img class="h-16" src={testimonial.photo} alt="">
+                  <h3 class="text-xl">{testimonial.name}</h3>
+                </div>
+              </div>
+          ))
+        }
+      </div>
+  </div>
+</section>
+
+<Partners />
+
+<CTA />
+
+
+</BaseLayout>

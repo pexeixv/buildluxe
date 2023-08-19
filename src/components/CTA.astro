@@ -1,0 +1,46 @@
+---
+import Button from "@components/Button.astro";
+---
+
+<section class="bg-black text-white">
+  <div class="container mx-auto px-5 py-10 lg:py-20">
+    <div class="flex max-lg:flex-col gap-4 lg:gap-28">
+      <h2 class="uppercase">
+        <p class="font-thin">Find out more</p>
+        <p class="font-black mt-1">Let's Chat!</p>
+      </h2>
+      <p class="max-w-sm">
+        Feel free to get in touch and find out how Buildluxe can help turn your
+        dream into a reality.
+      </p>
+    </div>
+    <form action="" class="mt-12 lg:mt-28 w-full flex items-center flex-col">
+      <div class="w-full gap-8 flex max-lg:flex-col">
+        <input
+          class="focus-within:outline-none w-full bg-transparent border-b-4 px-4 py-2"
+          name="name"
+          placeholder="Name *"
+          type="text"
+        />
+        <input
+          class="focus-within:outline-none w-full bg-transparent border-b-4 px-4 py-2"
+          name="email"
+          placeholder="Email *"
+          type="email"
+        />
+        <input
+          class="focus-within:outline-none w-full bg-transparent border-b-4 px-4 py-2"
+          name="phone"
+          placeholder="Phone *"
+          type="text"
+        />
+      </div>
+      <textarea
+        class="resize-none mt-8 focus-within:outline-none w-full bg-transparent border-b-4 px-4 py-2"
+        name="message"
+        placeholder="Message *"
+        rows="7"></textarea>
+      <Button classes="mt-12" variant="secondary" type="submit">Submit</Button>
+    </form>
+  </div>
+</section>

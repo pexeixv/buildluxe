@@ -1,0 +1,30 @@
+---
+import { Icon } from "astro-icon";
+---
+
+<footer class="bg-black text-white">
+  <div class="container mx-auto px-5 py-5 flex max-lg:flex-col justify-between">
+    <div class="flex flex-col max-lg:items-center">
+      <a href="/" class="text-white text-xl flex items-center">
+        <span class="font-thin">Build</span>
+        <span class="font-black">luxe</span></a
+      >
+      <div class="flex items-center gap-4 lg:mt-4 mt-2">
+        <a href="#"><Icon name="mdi:instagram" class="h-6 w-6" /></a>
+        <a href="#"><Icon name="mdi:youtube" class="h-6 w-6" /></a>
+        <a href="#"><Icon name="mdi:facebook" class="h-6 w-6" /></a>
+      </div>
+    </div>
+    <div class="flex items-center lg:items-end flex-col gap-1 lg:gap-4">
+      <p class="max-lg:mt-4">Copyright© 2023 Buildluxe All Rights Reserved</p>
+      <a href="//gavinpereira.in" class="flex items-center gap-2 group">
+        <Icon name="mdi:code" class="h-6 w-6" />
+        <span>by</span>
+        <span
+          class="group-hover:decoration-inherit underline font-bold decoration-transparent transition-colors duration-300"
+          >Gavin Pereira</span
+        >
+      </a>
+    </div>
+  </div>
+</footer>

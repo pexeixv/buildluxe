@@ -1,0 +1,114 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getImage, Image } from "astro:assets";
+import landServices from "@assets/land-services.jpg";
+import Button from "@components/Button.astro";
+const LandServices = await getImage({ src: landServices, format: "avif" });
+import CTA from "@components/CTA.astro";
+import Partners from "@components/Partners.astro";
+import Address from "@components/Address.astro";
+
+const members = [
+  {
+    name: "Chris",
+    designation: "Director",
+    image:
+      "https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_300/https://www.balitecture.com/wp-content/uploads/2022/09/PicsArt_05-26-11.40.54-1-300x300.png",
+  },
+  {
+    name: "Brent",
+    designation: "Operations Director",
+    image:
+      "https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_300/https://www.balitecture.com/wp-content/uploads/2022/09/Balitecture-Team-Brent-new-300x300.png",
+  },
+  {
+    name: "Daniel",
+    designation: "Sales Director",
+    image:
+      "https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_300/https://www.balitecture.com/wp-content/uploads/2022/11/Balitecture-Team-Dan-new1-300x300.png",
+  },
+  {
+    name: "Farida",
+    designation: "Project Director",
+    image:
+      "https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_300/https://www.balitecture.com/wp-content/uploads/2022/11/FARIDA_new-300x300.png",
+  },
+];
+---
+
+<BaseLayout title="About - Buildluxe">
+  <section
+    class="bg-cover bg-no-repeat bg-center relative"
+    style=`background-image:url(${LandServices.src})`
+  >
+    <div class="h-full w-full bg-black/30">
+      <div
+        class="container mx-auto px-5 py-10 lg:py-20 min-h-[70vh] flex items-center justify-center"
+      >
+        <h1
+          class="text-white text-balance text-center uppercase drop-shadow-4xl"
+        >
+          <p class="font-thin">Nice to</p>
+          <p class="font-black">meet you!</p>
+        </h1>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div
+      class="container mx-auto px-5 py-10 lg:py-20 grid lg:grid-cols-2 gap-28"
+    >
+      <div>
+        <h2 class="uppercase">
+          <p class="font-thin">Who</p>
+          <p class="font-black">we are</p>
+        </h2>
+        <Button classes="mt-8">Discover Ideal Service</Button>
+      </div>
+      <div>
+        <p>
+          Trusted by prestigious partners and clients, we design, construct and
+          manage our projects with experts assist across services. We specialize
+          in complete end-to-end property services of lifestyle houses, luxury
+          villas, high-end resorts, hot lands and more. From development,
+          investment to maintenance service throughout the island and
+          internationally.
+        </p>
+        <p class="mt-8">
+          Our passionate team of experts is motivated to assist in worry-free
+          property development and management. Top architects, professional
+          legal and project teams collaborate closely with real estate experts,
+          eager to service your personalized property needs.
+        </p>
+        <Button classes="mt-8" link="/contact">Let's Talk</Button>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container mx-auto px-5 py-10 lg:py-20">
+      <h2 class="uppercase text-center">
+        <p class="font-thin">Meet our</p>
+        <p class="font-black">property experts</p>
+      </h2>
+      <p class="uppercase text-sm text-center mt-4 tracking-widest opacity-60">
+        Responsible for making the magic happen
+      </p>
+      <div class="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-8">
+        {
+          members.map((member) => (
+            <div class="bg-neutral-200 flex flex-col items-end max-w-xs">
+              <div class="flex flex-col w-full p-4">
+                <h3 class="uppercase text-2xl">{member.name}</h3>
+                <span>{member.designation}</span>
+              </div>
+              <img src={member.image} class="grayscale h-64" alt="" />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <Address />
+  <Partners />
+  <CTA />
+</BaseLayout>

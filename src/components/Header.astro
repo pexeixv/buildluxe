@@ -1,0 +1,89 @@
+---
+import MenuItem, { IMenuItem } from "@components/MenuItem.astro";
+import MenuItemGroup, { IMenuItemGroup } from "@components/MenuItemGroup.astro";
+import Button from "./Button.astro";
+import { Icon } from "astro-icon";
+export interface IMenuItems extends Array<IMenuItem | IMenuItemGroup> {}
+
+const menuItems: IMenuItems = [
+  { label: "Home", link: "/" },
+  { label: "About", link: "/about" },
+  {
+    label: "Services",
+    list: [
+      { label: "Land", link: "#" },
+      { label: "Architecture", link: "#" },
+      { label: "Contruction", link: "#" },
+      { label: "Villa Management", link: "#" },
+    ],
+  },
+  { label: "Case Study", link: "/case-study" },
+];
+---
+
+<header
+  id="header"
+  class="text-white fixed font-thin top-0 left-0 w-full z-50 transition-colors duration-1000 delay-100"
+>
+  <div
+    class="container mx-auto px-5 py-4 flex flex-col lg:flex-row items-center justify-between"
+  >
+    <div class="flex items-center justify-between w-full">
+      <a href="/" class="text-white text-xl flex items-center">
+        <span class="font-thin">Build</span>
+        <span class="font-black">luxe</span></a
+      >
+      <button class="lg:hidden w-8 h-8" onclick="toggleMenu()">
+        <Icon name="mdi:hamburger-menu" id="open-menu" />
+        <Icon name="mdi:close" id="close-menu" class="hidden" />
+      </button>
+    </div>
+
+    <nav
+      id="menu"
+      class="uppercase hidden lg:flex gap-8 py-4 lg:py-0 max-lg:bg-black max-lg:w-full max-lg:relative max-lg:top-4"
+    >
+      <ul class="flex flex-col lg:flex-row items-center gap-8 w-full">
+        {
+          menuItems.map((item: IMenuItem | IMenuItemGroup) => {
+            if ("list" in item) return <MenuItemGroup {item} />;
+            return <MenuItem {item} />;
+          })
+        }
+        <Button
+          variant="secondary"
+          link="/contact"
+          classes="lg:hidden block font-bold"
+        >
+          Contact
+        </Button>
+      </ul>
+      <Button
+        variant="secondary"
+        link="/contact"
+        classes="lg:block hidden font-bold"
+      >
+        Contact
+      </Button>
+    </nav>
+  </div>
+</header>
+
+<script is:inline>
+  const openMenu = document.querySelector("#open-menu");
+  const closeMenu = document.querySelector("#close-menu");
+  const menu = document.querySelector("#menu");
+
+  const header = document.querySelector("#header");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 150) header.classList.add("bg-black");
+    else header.classList.remove("bg-black");
+  });
+
+  const toggleMenu = () => {
+    openMenu.classList.toggle("hidden");
+    closeMenu.classList.toggle("hidden");
+    menu.classList.toggle("hidden");
+    menu.classList.toggle("flex");
+  };
+</script>

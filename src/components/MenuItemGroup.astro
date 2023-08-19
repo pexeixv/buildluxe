@@ -1,0 +1,36 @@
+---
+import { IMenuItem } from "@components/MenuItem.astro";
+import MenuItem from "@components/MenuItem.astro";
+import { Icon } from "astro-icon";
+
+export interface IMenuItemGroup {
+  label: string;
+  list: Array<IMenuItem>;
+}
+interface Props {
+  item: IMenuItemGroup;
+}
+const { item } = Astro.props;
+---
+
+<div class="group relative">
+  <li
+    class="hover:text-accent transition-colors cursor-pointer text-center flex items-center gap-2 justify-center"
+    onclick="toggleSubMenu(this)"
+  >
+    <span>{item.label}</span>
+    <span class="h-5 w-5"><Icon name="mdi:chevron-down" /></span>
+  </li>
+  <ul
+    class="hidden lg:group-hover:flex lg:absolute flex-col pt-3 text-white/80 lg:text-black lg:py-3 px-4 rounded -left-4 gap-4 lg:gap-2 text-center lg:text-left lg:bg-white max-lg:text-sm max-lg:opacity-80"
+  >
+    {item.list.map((li) => <MenuItem item={li} />)}
+  </ul>
+</div>
+
+<script is:inline>
+  const toggleSubMenu = (e) => {
+    e.nextElementSibling.classList.toggle("hidden");
+    e.nextElementSibling.classList.toggle("flex");
+  };
+</script>

@@ -1,0 +1,30 @@
+---
+import Button from "./Button.astro";
+const partners = [
+  "https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_300/https://www.balitecture.com/wp-content/uploads/2023/04/Artboard-1-100-300x233.jpg",
+  "https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_300/https://www.balitecture.com/wp-content/uploads/2023/05/tiny-villas-web-logo-BLACK-300x98.png",
+  "https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_300/https://www.balitecture.com/wp-content/uploads/2023/05/Spacious-Logo-new-300x199.png",
+  "https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_300/https://www.balitecture.com/wp-content/uploads/2022/09/WhatsApp-Image-2022-09-08-at-3.55.06-PM-300x300.jpg",
+  "https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_300/https://www.balitecture.com/wp-content/uploads/2022/08/hdiy6udvmsxa6kngsj5p-300x200.jpg",
+  "https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_150/https://www.balitecture.com/wp-content/uploads/2022/04/Houseofreservations1-black-1-150x150.png",
+];
+---
+
+<section>
+  <div class="container mx-auto px-5 py-10 lg:py-20 flex flex-col items-center">
+    <h2 class="uppercase text-center">
+      <p class="font-thin">Partners &</p>
+      <p class="font-black mt-1">collabrations</p>
+    </h2>
+    <div
+      class="mt-12 grid grid-cols-3 lg:grid-cols-6 place-items-center gap-8 opacity-60"
+    >
+      {
+        partners.map((partner) => (
+          <img class="max-h-20 w-auto lg:max-h-32" src={partner} />
+        ))
+      }
+    </div>
+    <Button classes="mt-8">Work Together with Us</Button>
+  </div>
+</section>

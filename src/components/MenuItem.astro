@@ -1,0 +1,14 @@
+---
+export interface IMenuItem {
+  label: string;
+  link: string;
+}
+interface Props {
+  item: IMenuItem;
+}
+const { item } = Astro.props;
+---
+
+<li class="whitespace-nowrap hover:text-accent transition-colors">
+  <a href={item.link}>{item.label}</a>
+</li>
