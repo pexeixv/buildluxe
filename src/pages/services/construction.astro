@@ -210,13 +210,13 @@ const content = {
           ))
         }
       </div>
-      <div class="flex mt-8 gap-8">
-        <aside class="w-16">
+      <div class="flex mt-8 gap-4 lg:gap-8">
+        <aside class="">
           {
             sectors.map((sector, i) => (
               <Button
                 data-sector={i}
-                classes="h-14 p-4 aspect-square grid place-items-center  hover:scale-100"
+                classes="h-10 lg:h-14 p-2 lg:p-4 aspect-square grid place-items-center  hover:scale-100"
                 variant="outlined"
                 data-button="sector"
               >
@@ -225,7 +225,7 @@ const content = {
             ))
           }
         </aside>
-        <div class="flex-1 border h-fit p-8">
+        <div class="flex-1 border h-fit p-4 lg:p-8">
           {
             content.silver.map((con, index) => (
               <div
