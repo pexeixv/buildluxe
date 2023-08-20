@@ -2,8 +2,8 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getImage, Image } from "astro:assets";
 import { Icon } from "astro-icon";
-import placeholder from "@assets/placeholder.jpg";
-const Placeholder = await getImage({ src: placeholder, format: "webp" });
+import ourServices from "@assets/services.jpg";
+const Services = await getImage({ src: ourServices, format: "webp" });
 import landService from "@assets/land-service.jpg";
 const LandService = await getImage({
   src: landService,
@@ -11,7 +11,7 @@ const LandService = await getImage({
   height: 400,
   width: 800,
 });
-import architecturalDesign from "@assets/architectural-design.webp";
+import architecturalDesign from "@assets/architectural-design.jpg";
 const ArchitecturalDesign = await getImage({
   src: architecturalDesign,
   format: "webp",
@@ -32,16 +32,16 @@ const PortugueseHouse = await getImage({
   height: 400,
   width: 800,
 });
-import livingRoom from "@assets/living-room.jpg";
-import Consultation from "@components/Consultation.astro";
-import CTA from "@components/CTA.astro";
-import Button from "@components/Button.astro";
-const LivingRoom = await getImage({
-  src: livingRoom,
+import propertyManagement from "@assets/property-management.jpg";
+const PropertyManagement = await getImage({
+  src: propertyManagement,
   format: "webp",
   height: 400,
   width: 800,
 });
+import Consultation from "@components/Consultation.astro";
+import CTA from "@components/CTA.astro";
+import Button from "@components/Button.astro";
 const services = [
   {
     image: ConstructionService,
@@ -49,7 +49,7 @@ const services = [
     description:
       "Our team of construction specialists will build your new villa to the highest of international standards. Inspections are carried out on every aspect of the build to ensure quality.",
     icon: "mdi:tools",
-    href: "#",
+    href: "/services/construction",
   },
   {
     image: ArchitecturalDesign,
@@ -68,7 +68,7 @@ const services = [
     href: "#",
   },
   {
-    image: Placeholder,
+    image: PropertyManagement,
     title: "Property Management",
     description:
       "Preserving the key heritage elements, with skilled architects and designers who specialize in heritage restoration and modern luxury design. Retaining the essence of the original Portuguese architecture while seamlessly incorporating contemporary luxury elements. Integrating eco-friendly features and modern amenities without compromising the heritage integrity.",
@@ -89,7 +89,7 @@ const services = [
 <BaseLayout title="Services - Buildluxe">
   <section
     class="bg-cover bg-no-repeat bg-center relative"
-    style=`background-image:url(${Placeholder.src})`
+    style=`background-image:url(${Services.src})`
   >
     <div class="h-full w-full bg-black/30">
       <div

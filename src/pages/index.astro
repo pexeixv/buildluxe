@@ -9,12 +9,14 @@ import placeholder from "@assets/placeholder.jpg";
 const Placeholder = await getImage({ src: placeholder, format: "webp" });
 import landService from "@assets/land-service.jpg";
 const LandService = await getImage({ src: landService, format: "webp", height: 400, width: 800});
-import architecturalDesign from '@assets/architectural-design.webp'
+import architecturalDesign from '@assets/architectural-design.jpg'
 const ArchitecturalDesign = await getImage({ src: architecturalDesign, format: "webp", height: 400, width: 800});
 import constructionService from '@assets/construction-service.jpg'
 const ConstructionService = await getImage({ src: constructionService, format: "webp", height: 400, width: 800});
 import portugueseHouse from '@assets/portuguese-house.jpg'
 const PortugueseHouse = await getImage({ src: portugueseHouse, format: "webp", height: 400, width: 800});
+import propertyManagement from '@assets/property-management.jpg'
+const PropertyManagement = await getImage({ src: propertyManagement, format: "webp", height: 400, width: 800});
 import CTA from "@components/CTA.astro";
 import Partners from "@components/Partners.astro";
 import Consultation from "@components/Consultation.astro";
@@ -39,7 +41,7 @@ const services = [
       "Buying land in Goa can be a daunting task, but our land acquisition team can take care of everything for you. From finding the ideal plot to advising on the different purchase options.",
   },
   {
-    image: Placeholder,
+    image: PropertyManagement,
     title: "Property Management",
     description:
       "Preserving the key heritage elements, with skilled architects and designers who specialize in heritage restoration and modern luxury design. Retaining the essence of the original Portuguese architecture while seamlessly incorporating contemporary luxury elements. Integrating eco-friendly features and modern amenities without compromising the heritage integrity.",

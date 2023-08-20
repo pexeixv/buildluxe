@@ -1,0 +1,367 @@
+---
+import { getImage, Image } from "astro:assets";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import constructionService from "@assets/construction-service.jpg";
+import Button from "@components/Button.astro";
+import { Icon } from "astro-icon";
+import Markdown from "@astrojs/markdown-component";
+import * as Silver0 from "@content/construction/silver/design-and-drawings.md";
+import * as Silver1 from "@content/construction/silver/structure-and-civil.md";
+import * as Silver2 from "@content/construction/silver/kitchen.md";
+import * as Silver3 from "@content/construction/silver/bathroom.md";
+import * as Silver4 from "@content/construction/silver/woodwork.md";
+import * as Silver5 from "@content/construction/silver/painting.md";
+import * as Silver6 from "@content/construction/silver/flooring.md";
+import * as Silver7 from "@content/construction/silver/electrical.md";
+import * as Silver8 from "@content/construction/silver/water-tanks.md";
+import * as Silver9 from "@content/construction/silver/fabrication.md";
+import * as Silver10 from "@content/construction/silver/exclusions.md";
+import * as Silver11 from "@content/construction/silver/pricing.md";
+import * as Silver12 from "@content/construction/silver/warranty.md";
+import * as Silver13 from "@content/construction/silver/note.md";
+import * as Gold0 from "@content/construction/gold/design-and-drawings.md";
+import * as Gold1 from "@content/construction/gold/structure-and-civil.md";
+import * as Gold2 from "@content/construction/gold/kitchen.md";
+import * as Gold3 from "@content/construction/gold/bathroom.md";
+import * as Gold4 from "@content/construction/gold/woodwork.md";
+import * as Gold5 from "@content/construction/gold/painting.md";
+import * as Gold6 from "@content/construction/gold/flooring.md";
+import * as Gold7 from "@content/construction/gold/electrical.md";
+import * as Gold8 from "@content/construction/gold/water-tanks.md";
+import * as Gold9 from "@content/construction/gold/fabrication.md";
+import * as Gold10 from "@content/construction/gold/exclusions.md";
+import * as Gold11 from "@content/construction/gold/pricing.md";
+import * as Gold12 from "@content/construction/gold/warranty.md";
+import * as Gold13 from "@content/construction/gold/note.md";
+import * as Diamond0 from "@content/construction/diamond/design-and-drawings.md";
+import * as Diamond1 from "@content/construction/diamond/structure-and-civil.md";
+import * as Diamond2 from "@content/construction/diamond/kitchen.md";
+import * as Diamond3 from "@content/construction/diamond/bathroom.md";
+import * as Diamond4 from "@content/construction/diamond/woodwork.md";
+import * as Diamond5 from "@content/construction/diamond/painting.md";
+import * as Diamond6 from "@content/construction/diamond/flooring.md";
+import * as Diamond7 from "@content/construction/diamond/electrical.md";
+import * as Diamond8 from "@content/construction/diamond/water-tanks.md";
+import * as Diamond9 from "@content/construction/diamond/fabrication.md";
+import * as Diamond10 from "@content/construction/diamond/exclusions.md";
+import * as Diamond11 from "@content/construction/diamond/pricing.md";
+import * as Diamond12 from "@content/construction/diamond/warranty.md";
+import * as Diamond13 from "@content/construction/diamond/note.md";
+import * as Platinium0 from "@content/construction/platinium/design-and-drawings.md";
+import * as Platinium1 from "@content/construction/platinium/structure-and-civil.md";
+import * as Platinium2 from "@content/construction/platinium/kitchen.md";
+import * as Platinium3 from "@content/construction/platinium/bathroom.md";
+import * as Platinium4 from "@content/construction/platinium/woodwork.md";
+import * as Platinium5 from "@content/construction/platinium/painting.md";
+import * as Platinium6 from "@content/construction/platinium/flooring.md";
+import * as Platinium7 from "@content/construction/platinium/electrical.md";
+import * as Platinium8 from "@content/construction/platinium/water-tanks.md";
+import * as Platinium9 from "@content/construction/platinium/fabrication.md";
+import * as Platinium10 from "@content/construction/platinium/exclusions.md";
+import * as Platinium11 from "@content/construction/platinium/pricing.md";
+import * as Platinium12 from "@content/construction/platinium/warranty.md";
+import * as Platinium13 from "@content/construction/platinium/note.md";
+import Consultation from "@components/Consultation.astro";
+import CTA from "@components/CTA.astro";
+
+const ConstructionService = await getImage({
+  src: constructionService,
+  format: "webp",
+  height: 400,
+  width: 800,
+});
+const packages = [
+  {
+    name: "Silver",
+    price: "₹1579/ft²",
+  },
+  {
+    name: "Gold",
+    price: "₹1749/ft²",
+  },
+  {
+    name: "Diamond",
+    price: "₹1979/ft²",
+  },
+  {
+    name: "Platinium",
+    price: "₹2149/ft²",
+  },
+];
+
+const sectors = [
+  { name: "design-and-drawings", icon: "mdi:design" },
+  { name: "structure-and-civil", icon: "mdi:build" },
+  { name: "kitchen", icon: "mdi:kitchen-counter" },
+  { name: "bathroom", icon: "mdi:bathtub" },
+  { name: "woodwork", icon: "mdi:table-furniture" },
+  { name: "painting", icon: "mdi:format-paint" },
+  { name: "flooring", icon: "mdi:floor-plan" },
+  { name: "electrical", icon: "mdi:power-plug" },
+  { name: "water-tanks", icon: "mdi:water" },
+  { name: "fabrication", icon: "mdi:gate" },
+  { name: "exclusions", icon: "mdi:remove-bold" },
+  { name: "pricing", icon: "mdi:rupee" },
+  { name: "warranty", icon: "mdi:check-bold" },
+  { name: "note", icon: "mdi:exclamation" },
+];
+
+const content = {
+  silver: [
+    Silver0,
+    Silver1,
+    Silver2,
+    Silver3,
+    Silver4,
+    Silver5,
+    Silver6,
+    Silver7,
+    Silver8,
+    Silver9,
+    Silver10,
+    Silver11,
+    Silver12,
+    Silver13,
+  ],
+  gold: [
+    Gold0,
+    Gold1,
+    Gold2,
+    Gold3,
+    Gold4,
+    Gold5,
+    Gold6,
+    Gold7,
+    Gold8,
+    Gold9,
+    Gold10,
+    Gold11,
+    Gold12,
+    Gold13,
+  ],
+  diamond: [
+    Diamond0,
+    Diamond1,
+    Diamond2,
+    Diamond3,
+    Diamond4,
+    Diamond5,
+    Diamond6,
+    Diamond7,
+    Diamond8,
+    Diamond9,
+    Diamond10,
+    Diamond11,
+    Diamond12,
+    Diamond13,
+  ],
+  platinium: [
+    Platinium0,
+    Platinium1,
+    Platinium2,
+    Platinium3,
+    Platinium4,
+    Platinium5,
+    Platinium6,
+    Platinium7,
+    Platinium8,
+    Platinium9,
+    Platinium10,
+    Platinium11,
+    Platinium12,
+    Platinium13,
+  ],
+};
+---
+
+<BaseLayout title="Construction Service - Buildluxe">
+  <section
+    class="bg-cover bg-no-repeat bg-center relative"
+    style=`background-image:url(${ConstructionService.src})`
+  >
+    <div class="h-full w-full bg-black/30">
+      <div
+        class="container mx-auto px-5 py-10 lg:py-20 min-h-[40vh] lg:min-h-[70vh] flex items-center justify-center"
+      >
+        <h1
+          class="text-white text-balance text-center uppercase drop-shadow-4xl"
+        >
+          <p class="font-black">Construction</p>
+          <p class="font-thin">service</p>
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container mx-auto px-5 py-10 lg:py-20 max-w-6xl relative">
+      <div class="grid lg:grid-cols-4 gap-4">
+        {
+          packages.map((pkg, i) => (
+            <Button
+              classes="w-full flex items-center flex-col hover:scale-100"
+              variant="outlined"
+              data-package={i}
+              data-button="package"
+            >
+              <h3 class="pointer-events-none">{pkg.name}</h3>
+              <p class="pointer-events-none">{pkg.price}</p>
+            </Button>
+          ))
+        }
+      </div>
+      <div class="flex mt-8 gap-8">
+        <aside class="w-16">
+          {
+            sectors.map((sector, i) => (
+              <Button
+                data-sector={i}
+                classes="h-14 p-4 aspect-square grid place-items-center  hover:scale-100"
+                variant="outlined"
+                data-button="sector"
+              >
+                <Icon name={sector.icon} class="pointer-events-none" />
+              </Button>
+            ))
+          }
+        </aside>
+        <div class="flex-1 border h-fit p-8">
+          {
+            content.silver.map((con, index) => (
+              <div
+                class="hidden"
+                data-content
+                data-package="0"
+                data-sector={index}
+              >
+                <Markdown>
+                  <div class="prose">
+                    {""}
+                    {con.rawContent}
+                  </div>
+                </Markdown>
+              </div>
+            ))
+          }
+          {
+            content.gold.map((con, index) => (
+              <div
+                class="hidden"
+                data-content
+                data-package="1"
+                data-sector={index}
+              >
+                <Markdown>
+                  <div class="prose">
+                    {""}
+                    {con.rawContent}
+                  </div>
+                </Markdown>
+              </div>
+            ))
+          }
+          {
+            content.diamond.map((con, index) => (
+              <div
+                class="hidden"
+                data-content
+                data-package="2"
+                data-sector={index}
+              >
+                <Markdown>
+                  <div class="prose">
+                    {""}
+                    {con.rawContent}
+                  </div>
+                </Markdown>
+              </div>
+            ))
+          }
+          {
+            content.platinium.map((con, index) => (
+              <div
+                class="hidden"
+                data-content
+                data-package="3"
+                data-sector={index}
+              >
+                <Markdown>
+                  <div class="prose">
+                    {""}
+                    {con.rawContent}
+                  </div>
+                </Markdown>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+  <Consultation />
+  <CTA />
+</BaseLayout>
+
+<script>
+  let pkg = 0;
+  let sec = 0;
+
+  const buttons = document.querySelectorAll("[data-button]");
+  const contents = document.querySelectorAll("[data-content]");
+  const packages = document.querySelectorAll("[data-button][data-package]");
+  const sectors = document.querySelectorAll("[data-button][data-sector]");
+
+  packages[0].classList.remove("bg-white");
+  packages[0].classList.add("bg-black");
+  packages[0].classList.add("text-white");
+  packages[0].classList.remove("hover:bg-transparent");
+  packages[0].classList.remove("hover:text-black");
+  sectors[0].classList.remove("bg-white");
+  sectors[0].classList.add("bg-black");
+  sectors[0].classList.add("text-white");
+  sectors[0].classList.remove("hover:bg-transparent");
+  sectors[0].classList.remove("hover:text-black");
+
+  const updateContent = () => {
+    contents.forEach((content) => {
+      if (content?.dataset?.package == pkg && content?.dataset?.sector == sec)
+        content.classList.remove("hidden");
+      else content.classList.add("hidden");
+    });
+  };
+
+  updateContent();
+
+  buttons.forEach((button) =>
+    button.addEventListener("click", (e) => {
+      const type = e.target?.dataset.button;
+      const num = e.target?.dataset[type];
+      if (type == "package") {
+        pkg = num;
+        packages.forEach((a) => {
+          a.classList.add("bg-white");
+          a.classList.remove("bg-black");
+          a.classList.remove("text-white");
+          a.classList.remove("hover:bg-transparent");
+          a.classList.remove("hover:text-black");
+        });
+      }
+      if (type == "sector") {
+        sec = num;
+        sectors.forEach((a) => {
+          a.classList.add("bg-white");
+          a.classList.remove("bg-black");
+          a.classList.remove("text-white");
+          a.classList.remove("hover:bg-transparent");
+          a.classList.remove("hover:text-black");
+        });
+      }
+      e.target.classList.remove("bg-white");
+      e.target.classList.add("bg-black");
+      e.target.classList.add("text-white");
+      e.target.classList.remove("hover:bg-transparent");
+      e.target.classList.remove("hover:text-black");
+      updateContent();
+    })
+  );
+</script>

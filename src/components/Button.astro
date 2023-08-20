@@ -13,8 +13,7 @@ const defaultClasses =
   "hover:scale-90 bg-black text-white border border-black px-6 py-3 inline-block w-fit hover:bg-white hover:text-black transition-all duration-300";
 const secondary =
   "bg-white text-black hover:bg-transparent hover:text-white border-white";
-const outlined =
-  "text-dark border border-dark bg-transparent hover:bg-blue-300/60";
+const outlined = "text-dark border border-dark bg-white hover:bg-transparent";
 
 let variantClasses = "";
 if (variant == "secondary") variantClasses = secondary;
@@ -46,8 +45,8 @@ const twClasses = twMerge(defaultClasses, variantClasses, classes);
 
 {
   !link && !onclick && (
-    <a class={twClasses}>
+    <button class={twMerge(twClasses, "cursor-pointer")} {...Astro.props}>
       <slot>Button</slot>
-    </a>
+    </button>
   )
 }
