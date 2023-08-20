@@ -15,10 +15,9 @@ import constructionService from '@assets/construction-service.jpg'
 const ConstructionService = await getImage({ src: constructionService, format: "webp", height: 400, width: 800});
 import portugueseHouse from '@assets/portuguese-house.jpg'
 const PortugueseHouse = await getImage({ src: portugueseHouse, format: "webp", height: 400, width: 800});
-import livingRoom from '@assets/living-room.jpg'
-const LivingRoom = await getImage({ src: livingRoom, format: "webp", height: 400, width: 800});
 import CTA from "@components/CTA.astro";
 import Partners from "@components/Partners.astro";
+import Consultation from "@components/Consultation.astro";
 
 const services = [
   {
@@ -38,6 +37,12 @@ const services = [
     title: "Land services",
     description:
       "Buying land in Goa can be a daunting task, but our land acquisition team can take care of everything for you. From finding the ideal plot to advising on the different purchase options.",
+  },
+  {
+    image: Placeholder,
+    title: "Property Management",
+    description:
+      "Preserving the key heritage elements, with skilled architects and designers who specialize in heritage restoration and modern luxury design. Retaining the essence of the original Portuguese architecture while seamlessly incorporating contemporary luxury elements. Integrating eco-friendly features and modern amenities without compromising the heritage integrity.",
   },
   {
     image: PortugueseHouse,
@@ -114,8 +119,8 @@ const testimonials = [
       </h2>
       <div class="mt-12 grid grid-cols-2" style="grid-auto-rows: 1fr;">
         {
-          services.map(service=>(
-            <div class="group bg-cover bg-no-repeat bg-center text-white text-center" style=`background-image:url('${service.image.src}')`>
+          services.map((service,index)=>(
+            <div class:list={["group bg-cover bg-no-repeat bg-center text-white text-center", {'col-span-2': (services.length%2 && !index) }]} style=`background-image:url('${service.image.src}')`>
               <div class="w-full h-full bg-black/50 flex flex-col items-center justify-center p-16 lg:opacity-0 lg:pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 delay-100">
                 <h3 class="first">{service.title}</h3>
                 <p class="max-lg:hidden mt-4 text-lg max-w-md">{service.description}</p>
@@ -177,18 +182,7 @@ const testimonials = [
   </div>
 </section>
 
-<section class="bg-cover bg-no-repeat bg-center backdrop-blur-3xl" style=`background-image:url('${LivingRoom.src}')`>
-  <div class="w-full h-full bg-black/30">
-    <div class="container mx-auto px-5 py-10 lg:py-20 flex flex-col items-center justify-center text-center text-white max-w-2xl">
-      <h2 class="uppercase">
-        <p class="font-thin">Schedule</p>
-        <p class="font-black mt-1">a free consultation</p>
-      </h2>
-      <Button variant="secondary" classes="mt-8" link="#">Enquire Now</Button>
-    </div>
-  </div>
-</section>
-
+<Consultation />
 
 <section class="bg-neutral-100">
   <div class="container mx-auto px-5 py-10 lg:py-20">

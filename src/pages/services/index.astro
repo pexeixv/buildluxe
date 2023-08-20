@@ -1,0 +1,187 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getImage, Image } from "astro:assets";
+import { Icon } from "astro-icon";
+import placeholder from "@assets/placeholder.jpg";
+const Placeholder = await getImage({ src: placeholder, format: "webp" });
+import landService from "@assets/land-service.jpg";
+const LandService = await getImage({
+  src: landService,
+  format: "webp",
+  height: 400,
+  width: 800,
+});
+import architecturalDesign from "@assets/architectural-design.webp";
+const ArchitecturalDesign = await getImage({
+  src: architecturalDesign,
+  format: "webp",
+  height: 400,
+  width: 800,
+});
+import constructionService from "@assets/construction-service.jpg";
+const ConstructionService = await getImage({
+  src: constructionService,
+  format: "webp",
+  height: 400,
+  width: 800,
+});
+import portugueseHouse from "@assets/portuguese-house.jpg";
+const PortugueseHouse = await getImage({
+  src: portugueseHouse,
+  format: "webp",
+  height: 400,
+  width: 800,
+});
+import livingRoom from "@assets/living-room.jpg";
+import Consultation from "@components/Consultation.astro";
+import CTA from "@components/CTA.astro";
+import Button from "@components/Button.astro";
+const LivingRoom = await getImage({
+  src: livingRoom,
+  format: "webp",
+  height: 400,
+  width: 800,
+});
+const services = [
+  {
+    image: ConstructionService,
+    title: "Construction Service",
+    description:
+      "Our team of construction specialists will build your new villa to the highest of international standards. Inspections are carried out on every aspect of the build to ensure quality.",
+    icon: "mdi:tools",
+    href: "#",
+  },
+  {
+    image: ArchitecturalDesign,
+    title: "Architectural Design",
+    description:
+      "We have an excellent array of artistic , outstanding architectural firms we work alongside with .Get in touch to design and craft your dream home.",
+    icon: "mdi:architecture",
+    href: "#",
+  },
+  {
+    image: LandService,
+    title: "Land services",
+    description:
+      "Buying land in Goa can be a daunting task, but our land acquisition team can take care of everything for you. From finding the ideal plot to advising on the different purchase options.",
+    icon: "mdi:map",
+    href: "#",
+  },
+  {
+    image: Placeholder,
+    title: "Property Management",
+    description:
+      "Preserving the key heritage elements, with skilled architects and designers who specialize in heritage restoration and modern luxury design. Retaining the essence of the original Portuguese architecture while seamlessly incorporating contemporary luxury elements. Integrating eco-friendly features and modern amenities without compromising the heritage integrity.",
+    icon: "mdi:paper",
+    href: "#",
+  },
+  {
+    image: PortugueseHouse,
+    title: "Restoration of heritage homes",
+    description:
+      "Preserving the key heritage elements, with skilled architects and designers who specialize in heritage restoration and modern luxury design. Retaining the essence of the original Portuguese architecture while seamlessly incorporating contemporary luxury elements. Integrating eco-friendly features and modern amenities without compromising the heritage integrity.",
+    icon: "mdi:restore",
+    href: "#",
+  },
+];
+---
+
+<BaseLayout title="Services - Buildluxe">
+  <section
+    class="bg-cover bg-no-repeat bg-center relative"
+    style=`background-image:url(${Placeholder.src})`
+  >
+    <div class="h-full w-full bg-black/30">
+      <div
+        class="container mx-auto px-5 py-10 lg:py-20 min-h-[40vh] lg:min-h-[70vh] flex items-center justify-center"
+      >
+        <h1
+          class="text-white text-balance text-center uppercase drop-shadow-4xl"
+        >
+          <p class="font-thin">Our</p>
+          <p class="font-black">services</p>
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div
+      class="container mx-auto px-5 py-10 lg:py-20 grid lg:grid-cols-5 gap-8 max-w-7xl"
+    >
+      {
+        services.map((service) => (
+          <a
+            href={service.href}
+            class="bg-cover bg-no-repeat bg-center grayscale"
+            style={`background-image:url(${service.image.src})`}
+          >
+            <div class="w-full h-full bg-black/60 text-white flex flex-col items-center p-8 lg:py-20">
+              <Icon name={service.icon} height={60} />
+              <h4 class="uppercase text-balance text-center mt-8">
+                {service.title}
+              </h4>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+  <section>
+    <div class="container mx-auto px-5 py-10 lg:py-20">
+      <div class="splide relative">
+        <div class="splide__track">
+          <ul class="splide__list">
+            {
+              services.map((service) => (
+                <li class="splide__slide pb-64">
+                  <div
+                    class="w-full h-96 bg-cover bg-no-repeat bg-center relative"
+                    style={`background-image:url(${service.image.src})`}
+                  >
+                    <div class="max-lg:px-4 absolute w-full max-w-lg right-1/2 max-lg:translate-x-1/2 lg:right-28 bottom-0 translate-y-1/2 ">
+                      <div class=" bg-white shadow-xl p-8 max-lg:items-center mx-auto">
+                        <h2>{service.title}</h2>
+                        <p class="mt-4 text-justify">{service.description}</p>
+                        <Button classes="mt-4 text-sm" link={service.href}>
+                          Learn More
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <!-- <div
+          class="splide__arrows flex items-center gap-8 lg:absolute lg:bottom-0 lg:left-0"
+        >
+          <button
+            class="splide__arrow splide__arrow--prev aspect-square p-1 rounded-full border-4 border-black grid place-items-center"
+          >
+            <Icon height={40} name="mdi:chevron-left" />
+          </button>
+          <button
+            class="splide__arrow splide__arrow--next aspect-square p-1 rounded-full border-4 border-black grid place-items-center"
+          >
+            <Icon height={40} name="mdi:chevron-right" />
+          </button>
+        </div> -->
+      </div>
+    </div>
+    <Consultation />
+    <CTA />
+  </section>
+
+  <script>
+    import Splide from "@splidejs/splide";
+    import "@splidejs/splide/css";
+    new Splide(".splide", {
+      type: "loop",
+      pagination: false,
+      arrows: false,
+      autoplay: true,
+    }).mount();
+  </script>
+</BaseLayout>

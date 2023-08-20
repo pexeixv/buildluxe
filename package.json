@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/tailwind": "^4.0.0",
     "@fontsource-variable/plus-jakarta-sans": "^5.0.9",
+    "@splidejs/splide": "^4.1.4",
     "astro": "^2.6.5",
     "astro-icon": "^0.8.1",
     "sharp": "^0.32.5",

@@ -1,0 +1,28 @@
+---
+import { getImage, Image } from "astro:assets";
+import Button from "./Button.astro";
+import livingRoom from "@assets/living-room.jpg";
+const LivingRoom = await getImage({
+  src: livingRoom,
+  format: "webp",
+  height: 400,
+  width: 800,
+});
+---
+
+<section
+  class="bg-cover bg-no-repeat bg-center backdrop-blur-3xl"
+  style=`background-image:url('${LivingRoom.src}')`
+>
+  <div class="w-full h-full bg-black/30">
+    <div
+      class="container mx-auto px-5 py-10 lg:py-20 flex flex-col items-center justify-center text-center text-white max-w-2xl"
+    >
+      <h2 class="uppercase">
+        <p class="font-thin">Schedule</p>
+        <p class="font-black mt-1">a free consultation</p>
+      </h2>
+      <Button variant="secondary" classes="mt-8" link="#">Enquire Now</Button>
+    </div>
+  </div>
+</section>
