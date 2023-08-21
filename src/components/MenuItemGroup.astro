@@ -15,16 +15,16 @@ const { item } = Astro.props;
 
 <div class="group relative">
   <li
-  class="hover:text-accent transition-colors cursor-pointer text-center flex items-center gap-2 justify-center"
-  onclick="toggleSubMenu(this)"
+    class="hover:text-accent transition-colors cursor-pointer text-center flex items-center gap-2 justify-center"
+    onclick="toggleSubMenu(this)"
   >
-    <a href={item.link}>
+    <a href={item?.link}>
       <span>{item.label}</span>
     </a>
-      <span class="h-5 w-5"><Icon name="mdi:chevron-down" /></span>
-    </li>
+    <span class="h-5 w-5"><Icon name="mdi:chevron-down" /></span>
+  </li>
   <ul
-    class="hidden lg:group-hover:flex lg:absolute flex-col pt-3 text-white/80 lg:text-black lg:py-3 px-4 rounded lg:left-1/2 lg:-translate-x-1/2  gap-4 lg:gap-2 text-center lg:bg-white max-lg:text-sm max-lg:opacity-80"
+    class="hidden lg:group-hover:flex lg:absolute flex-col pt-3 text-white/80 lg:text-black lg:py-3 px-4 rounded lg:left-1/2 lg:-translate-x-1/2 gap-4 lg:gap-2 text-center lg:bg-white max-lg:text-sm max-lg:opacity-80"
   >
     {item.list.map((li) => <MenuItem item={li} />)}
   </ul>

@@ -1,0 +1,128 @@
+---
+import { getImage, Image } from "astro:assets";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import architecturalDesign from "@assets/architectural-design.jpg";
+const ArchitecturalDesign = await getImage({
+  src: architecturalDesign,
+  format: "webp",
+  height: 400,
+  width: 800,
+});
+import Consultation from "@components/Consultation.astro";
+import CTA from "@components/CTA.astro";
+import Button from "@components/Button.astro";
+import { Icon } from "astro-icon";
+
+const architects = [
+  {
+    name: "Gavin Pereira",
+    image: "https://github.com/pexeixv.png",
+    description:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam pariatur sequi temporibus quae. Saepe aliquam, temporibus autem illum tempore ducimus nulla minima accusamus animi excepturi.",
+    email: "connect@gavinpereira.in",
+    website: "//gavinpereira.in",
+  },
+  {
+    name: "Angio Fernandes",
+    image:
+      "https://i.ibb.co/zxhcn7V/358053197-798947084969162-7014986700392171746-n.jpg",
+    description:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam pariatur sequi temporibus quae. Saepe aliquam, temporibus autem illum tempore ducimus nulla minima accusamus animi excepturi. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam pariatur sequi temporibus quae. Saepe aliquam, temporibus autem illum tempore ducimus nulla minima accusamus animi excepturi.",
+    email: "aaf001@chowgules.ac.in",
+    website: "",
+  },
+  {
+    name: "Charles D'souza",
+    image: "https://placehold.co/400x400",
+    description:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam pariatur sequi temporibus quae. Saepe aliquam, temporibus autem illum tempore ducimus nulla minima accusamus animi excepturi.",
+    email: "",
+    website: "//reginamundischool.com",
+  },
+  {
+    name: "Anish John",
+    image: "https://placehold.co/400x400",
+    description:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam pariatur sequi temporibus quae. Saepe aliquam, temporibus autem illum tempore ducimus nulla minima accusamus animi excepturi.",
+    email: "admin@reginamundischool.com",
+    website: "//reginamundischool.com",
+  },
+];
+---
+
+<BaseLayout title="Architectural Design - Buildluxe">
+  <section
+    class="bg-cover bg-no-repeat bg-center relative"
+    style=`background-image:url(${ArchitecturalDesign.src})`
+  >
+    <div class="h-full w-full bg-black/30">
+      <div
+        class="container mx-auto px-5 py-10 lg:py-20 min-h-[40vh] lg:min-h-[70vh] flex items-center justify-center"
+      >
+        <h1
+          class="text-white text-balance text-center uppercase drop-shadow-4xl"
+        >
+          <p class="font-black">Architecture</p>
+          <p class="font-thin">& design</p>
+        </h1>
+      </div>
+    </div>
+  </section>
+  <section class="px-4 lg:px-12 bg-neutral-100">
+    <div
+      class="container mx-auto p-8 lg:p-16 bg-white shadow-md relative bottom-28 grid lg:grid-cols-2 gap-12 lg:gap-28"
+    >
+      <h2 class="uppercase">
+        <p class="font-thin">Trusted architects</p>
+        <p class="font-black">in Goa</p>
+      </h2>
+      <p>
+        Utilizing the latest in design, materials, and smart home integration,
+        we create functional villas with convenience and style. With years of
+        experience in creating award-winning designs, our architects team have
+        left an incredible mark on Goa, and beyond.
+      </p>
+    </div>
+  </section>
+  <section class="bg-neutral-100">
+    <div
+      class="container mx-auto px-5 pb-10 lg:pb-20 grid gap-8 md:grid-cols-3"
+    >
+      {
+        architects.map((architect) => (
+          <div class="flex flex-col p-4 lg:p-8 bg-white shadow-md">
+            <img
+              src={architect.image}
+              alt=""
+              class="aspect-square object-cover mx-auto w-full"
+            />
+            <h3 class="mt-8">{architect.name}</h3>
+            <p class="mt-4">{architect.description}</p>
+            <div class="flex items-end gap-2 mt-8 flex-1 h-full">
+              {architect.email && (
+                <Button
+                  classes="flex items-center gap-2 w-full justify-center flex-1"
+                  link={`mailto:${architect.email}`}
+                >
+                  <Icon name="mdi:email" height={25} />
+                  <span>Email</span>
+                </Button>
+              )}
+              {architect.website && (
+                <Button
+                  classes="flex items-center gap-2 w-full justify-center flex-1"
+                  link={architect.website}
+                >
+                  <Icon name="mdi:internet" height={25} />
+                  <span>Website</span>
+                </Button>
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+  <Consultation />
+  <CTA />
+</BaseLayout>
