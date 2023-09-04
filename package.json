@@ -10,17 +10,20 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/tailwind": "^4.0.0",
+    "@astrojs/markdown-component": "^1.0.5",
+    "@astrojs/tailwind": "^5.0.0",
+    "@astropub/md": "^0.2.0",
     "@fontsource-variable/plus-jakarta-sans": "^5.0.9",
     "@splidejs/splide": "^4.1.4",
-    "astro": "^2.6.5",
+    "astro": "^3.0.7",
     "astro-icon": "^0.8.1",
     "sharp": "^0.32.5",
     "tailwind-merge": "^1.14.0",
     "tailwindcss": "^3.0.24"
   },
   "devDependencies": {
-    "@astrojs/markdown-component": "^1.0.5",
-    "@tailwindcss/typography": "^0.5.9"
+    "@tailwindcss/typography": "^0.5.9",
+    "@types/node": "^20.5.9",
+    "astro-remote": "^0.2.4"
   }
 }

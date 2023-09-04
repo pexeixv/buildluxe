@@ -1,0 +1,112 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Button from "@components/Button.astro";
+import { getImage, Image } from "astro:assets";
+import Address from "@components/Address.astro";
+import landService from "@assets/land-service.jpg";
+const LandService = await getImage({
+  src: landService,
+  format: "webp",
+  height: 400,
+  width: 800,
+});
+---
+
+<BaseLayout title="Land Service - Buildluxe">
+  <section
+    class="bg-cover bg-no-repeat bg-center relative"
+    style=`background-image:url(${LandService.src})`
+  >
+    <div class="h-full w-full bg-black/30">
+      <div
+        class="container mx-auto px-5 py-10 lg:py-20 min-h-[50vh] lg:min-h-[70vh] pb-28 flex items-center justify-center"
+      >
+        <h1
+          class="text-white text-balance text-center uppercase drop-shadow-4xl"
+        >
+          <p class="font-black">Land</p>
+          <p class="font-thin">Service</p>
+        </h1>
+      </div>
+    </div>
+  </section>
+  <section class="px-4 lg:px-12 bg-neutral-100">
+    <div
+      class="container mx-auto px-4 py-8 lg:p-10 lg:px-16 bg-white shadow-md relative bottom-28 grid lg:grid-cols-2 gap-12 lg:gap-28"
+    >
+      <div class="lg:w-9/12 max-lg:text-center">
+        <h2 class="uppercase">
+          <p class="font-thin">Land for sale</p>
+          <p class="font-black">in Goa</p>
+        </h2>
+        <div class="bg-neutral-400 w-12 h-0.5 my-8 max-lg:mx-auto"></div>
+        <p class="mt-4 text-neutral-500">
+          Buying in Goa is a great investment and a lot of fun, but you will
+          likely have plenty of questions. Our property experts are here to
+          help!
+        </p>
+        <p class="mt-4 text-neutral-500">
+          We can answer any questions at all stages of the process, whether you
+          are just getting started, are ready to buy some land, want a bespoke
+          villa design or need trusted builders.
+        </p>
+        <p class="mt-4 text-neutral-500">
+          To get in touch with our friendly team and discuss your villa, land,
+          commercial property or construction requirements, please complete the
+          form.
+        </p>
+      </div>
+      <form
+        action=""
+        class="mt-12 lg:mt-28 w-full flex items-center flex-col gap-8"
+      >
+        <div class="w-full gap-8 flex max-lg:flex-col">
+          <input
+            class="focus-within:outline-none w-full bg-transparent border-b-4 px-4 py-2"
+            name="name"
+            placeholder="Name *"
+            type="text"
+          />
+          <input
+            class="focus-within:outline-none w-full bg-transparent border-b-4 px-4 py-2"
+            name="email"
+            placeholder="Email *"
+            type="email"
+          />
+        </div>
+        <div class="w-full gap-8 flex max-lg:flex-col">
+          <input
+            class="focus-within:outline-none w-full bg-transparent border-b-4 px-4 py-2"
+            name="phone"
+            placeholder="Phone *"
+            type="text"
+          />
+          <input
+            class="focus-within:outline-none w-full bg-transparent border-b-4 px-4 py-2"
+            name="type"
+            placeholder="Land Type"
+            type="text"
+          />
+        </div>
+
+        <div class="w-full gap-8 flex max-lg:flex-col">
+          <input
+            class="focus-within:outline-none w-full bg-transparent border-b-4 px-4 py-2"
+            name="location"
+            placeholder="Prefered Location"
+            type="text"
+          />
+          <input
+            class="focus-within:outline-none w-full bg-transparent border-b-4 px-4 py-2"
+            name="size"
+            placeholder="Land Size"
+            type="text"
+          />
+        </div>
+
+        <Button classes="mt-12" variant="primary" type="submit">Submit</Button>
+      </form>
+    </div>
+  </section>
+  <Address />
+</BaseLayout>

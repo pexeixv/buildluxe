@@ -1,10 +1,10 @@
 ---
+import { Markdown } from "@astropub/md";
 import { getImage, Image } from "astro:assets";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import constructionService from "@assets/construction-service.jpg";
 import Button from "@components/Button.astro";
 import { Icon } from "astro-icon";
-import Markdown from "@astrojs/markdown-component";
 import * as Silver0 from "@content/construction/silver/design-and-drawings.md";
 import * as Silver1 from "@content/construction/silver/structure-and-civil.md";
 import * as Silver2 from "@content/construction/silver/kitchen.md";
@@ -72,19 +72,19 @@ const ConstructionService = await getImage({
 });
 const packages = [
   {
-    name: "Silver",
+    name: "Silver*",
     price: "₹1579/ft²",
   },
   {
-    name: "Gold",
+    name: "Gold*",
     price: "₹1749/ft²",
   },
   {
-    name: "Diamond",
+    name: "Diamond*",
     price: "₹1979/ft²",
   },
   {
-    name: "Platinium",
+    name: "Platinium*",
     price: "₹2149/ft²",
   },
 ];
@@ -195,7 +195,7 @@ const content = {
 
   <section>
     <div class="container mx-auto px-5 py-10 lg:py-20 max-w-6xl relative">
-      <div class="grid lg:grid-cols-4 gap-4">
+      <div class="grid lg:grid-cols-4 gap-4 mb-8">
         {
           packages.map((pkg, i) => (
             <Button
@@ -210,7 +210,7 @@ const content = {
           ))
         }
       </div>
-      <div class="flex mt-8 gap-4 lg:gap-8">
+      <!-- <div class="flex my-8 gap-4 lg:gap-8">
         <aside class="">
           {
             sectors.map((sector, i) => (
@@ -234,12 +234,9 @@ const content = {
                 data-package="0"
                 data-sector={index}
               >
-                <Markdown>
-                  <div class="prose">
-                    {""}
-                    {con.rawContent}
-                  </div>
-                </Markdown>
+                <div class="prose">
+                  <Markdown of={con.rawContent.toString()} />
+                </div>
               </div>
             ))
           }
@@ -251,12 +248,9 @@ const content = {
                 data-package="1"
                 data-sector={index}
               >
-                <Markdown>
-                  <div class="prose">
-                    {""}
-                    {con.rawContent}
-                  </div>
-                </Markdown>
+                <div class="prose">
+                  <Markdown of={con.rawContent.toString()} />
+                </div>
               </div>
             ))
           }
@@ -268,12 +262,9 @@ const content = {
                 data-package="2"
                 data-sector={index}
               >
-                <Markdown>
-                  <div class="prose">
-                    {""}
-                    {con.rawContent}
-                  </div>
-                </Markdown>
+                <div class="prose">
+                  <Markdown of={con.rawContent.toString()} />
+                </div>
               </div>
             ))
           }
@@ -285,24 +276,22 @@ const content = {
                 data-package="3"
                 data-sector={index}
               >
-                <Markdown>
-                  <div class="prose">
-                    {""}
-                    {con.rawContent}
-                  </div>
-                </Markdown>
+                <div class="prose">
+                  <Markdown of={con.rawContent.toString()} />
+                </div>
               </div>
             ))
           }
         </div>
-      </div>
+      </div> -->
+      <span class="mt-8">*Tentative rates: Vary from project-to-project.</span>
     </div>
   </section>
   <Consultation />
   <CTA />
 </BaseLayout>
 
-<script>
+<!-- <script>
   let pkg = 0;
   let sec = 0;
 
@@ -333,7 +322,7 @@ const content = {
   updateContent();
 
   buttons.forEach((button) =>
-    button.addEventListener("click", (e) => {
+    button.addEventListener("click", (e: Event) => {
       const type = e.target?.dataset.button;
       const num = e.target?.dataset[type];
       if (type == "package") {
@@ -348,7 +337,7 @@ const content = {
       }
       if (type == "sector") {
         sec = num;
-        sectors.forEach((a) => {
+        sectors.forEach((a: HTMLButtonElement) => {
           a.classList.add("bg-white");
           a.classList.remove("bg-black");
           a.classList.remove("text-white");
@@ -364,4 +353,4 @@ const content = {
       updateContent();
     })
   );
-</script>
+</script> -->

@@ -12,7 +12,7 @@ const LandService = await getImage({ src: landService, format: "webp", height: 4
 import architecturalDesign from '@assets/architectural-design.jpg'
 const ArchitecturalDesign = await getImage({ src: architecturalDesign, format: "webp", height: 400, width: 800});
 import constructionService from '@assets/construction-service.jpg'
-const ConstructionService = await getImage({ src: constructionService, format: "webp", height: 400, width: 800});
+const ConstructionService = await getImage({ src: constructionService, format: "webp", height: 600, width: 1500});
 import portugueseHouse from '@assets/portuguese-house.jpg'
 const PortugueseHouse = await getImage({ src: portugueseHouse, format: "webp", height: 400, width: 800});
 import propertyManagement from '@assets/property-management.jpg'
@@ -20,6 +20,7 @@ const PropertyManagement = await getImage({ src: propertyManagement, format: "we
 import CTA from "@components/CTA.astro";
 import Partners from "@components/Partners.astro";
 import Consultation from "@components/Consultation.astro";
+import InlineSVG from "@components/InlineSVG.astro";
 
 const services = [
   {
@@ -80,13 +81,13 @@ const testimonials = [
     class="bg-cover bg-no-repeat bg-center relative"
     style=`background-image:url(${hero.src})`
   >
-    <div class="w-full h-full bg-black/30">
+    <div class="w-full h-full bg-black/50">
       <div
         class="relative container mx-auto px-5 py-10 lg:py-20 min-h-screen grid place-items-center"
       >
-        <h1 class="text-white text-balance text-center uppercase drop-shadow-4xl">
-          <p class="font-thin">Designing your Dream</p>
-          <p class="font-black">Creating Beautiful Villas</p>
+        <h1 class="text-white text-balance text-center  drop-shadow-4xl">
+          <p class="font-thin uppercase text-2xl md:text-3xl lg:text-5xl">Designing your Dream</p>
+          <p class="font-catchye font-thin text-brand text-5xl md:text-6xl lg:text-8xl mt-4">"Crafting Beautiful Homes"</p>
         </h1>
       </div>
     </div>
@@ -104,7 +105,7 @@ const testimonials = [
       <div class="flex flex-col justify-center">
         <h2 class="uppercase">
           <p class="font-thin">About</p>
-          <p class="font-black">Buildluxe</p>
+          <InlineSVG path="logo" height={30} />
         </h2>
         <p class="mt-8">
           Buildluxe is a Goan architecture & construction company eagerly bringing dream houses and high-end projects into reality. Driven by commitment, trust and vision on enabling perfect houses for everyone, we are delighted to help. From our widely-popular luxury villas and residential spaces to heritage constructions no project is too large or too small. Our Goal is to craft a sustainable, nature oriented lifestyle, with distinctive art oriented design presence.
@@ -141,8 +142,8 @@ const testimonials = [
 <section>
   <div class="container mx-auto px-5 py-20">
     <h2 class="uppercase text-center">
-      <p class="font-thin">Our awaited</p>
-      <p class="font-black">ongoing projects</p>
+      <p class="font-thin">Our profound</p>
+      <p class="font-black">Portfolio</p>
       </h2>
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-4">

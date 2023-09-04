@@ -2,8 +2,9 @@
 import { getImage, Image } from "astro:assets";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import architecturalDesign from "@assets/architectural-design.jpg";
-const ArchitecturalDesign = await getImage({
-  src: architecturalDesign,
+import portugueseHouse from "@assets/portuguese-house.jpg";
+const PortugueseHouse = await getImage({
+  src: portugueseHouse,
   format: "webp",
   height: 400,
   width: 800,
@@ -13,7 +14,7 @@ import CTA from "@components/CTA.astro";
 import Button from "@components/Button.astro";
 import { Icon } from "astro-icon";
 
-const architects = [
+const restorers = [
   {
     name: "Dean da Cruz",
     image: "https://placehold.co/400x400",
@@ -69,10 +70,10 @@ const architects = [
 ];
 ---
 
-<BaseLayout title="Architectural Design - Buildluxe">
+<BaseLayout title="Restoration of Heritage Homes - Buildluxe">
   <section
     class="bg-cover bg-no-repeat bg-center relative"
-    style=`background-image:url(${ArchitecturalDesign.src})`
+    style=`background-image:url(${PortugueseHouse.src})`
   >
     <div class="h-full w-full bg-black/30">
       <div
@@ -81,8 +82,8 @@ const architects = [
         <h1
           class="text-white text-balance text-center uppercase drop-shadow-4xl"
         >
-          <p class="font-black">Architecture</p>
-          <p class="font-thin">& design</p>
+          <p class="font-thin">Restoraton of</p>
+          <p class="font-black">heritage homes</p>
         </h1>
       </div>
     </div>
@@ -92,7 +93,7 @@ const architects = [
       class="container mx-auto p-8 lg:p-16 bg-white shadow-md relative bottom-12 lg:bottom-28 grid lg:grid-cols-2 gap-4 lg:gap-28"
     >
       <h2 class="uppercase">
-        <p class="font-thin">Trusted architects</p>
+        <p class="font-thin">Trusted restorers</p>
         <p class="font-black">in Goa</p>
       </h2>
       <p>
@@ -105,30 +106,30 @@ const architects = [
   </section>
 
   {
-    architects.map((architect, i) => (
+    restorers.map((restorer, i) => (
       <div class="container mx-auto px-5 py-10 lg:py-20 flex max-lg:flex-col gap-8 mt-12 lg:even:flex-row-reverse">
         <div class="lg:w-1/2">
           <img
-            src={architect.image}
+            src={restorer.image}
             alt=""
             class="h-32 aspect-square rounded-md"
           />
-          <h2 class="mt-4">{architect.name}</h2>
-          <p class="mt-2 max-w-xl">{architect.description}</p>
+          <h2 class="mt-4">{restorer.name}</h2>
+          <p class="mt-2 max-w-xl">{restorer.description}</p>
           <div class="flex items-end gap-2 mt-8">
-            {architect.email && (
+            {restorer.email && (
               <Button
                 classes="flex items-center gap-2 justify-center"
-                link={`mailto:${architect.email}`}
+                link={`mailto:${restorer.email}`}
               >
                 <Icon name="mdi:email" height={25} />
                 <span>Email</span>
               </Button>
             )}
-            {architect.website && (
+            {restorer.website && (
               <Button
                 classes="flex items-center gap-2 justify-center"
-                link={architect.website}
+                link={restorer.website}
               >
                 <Icon name="mdi:internet" height={25} />
                 <span>Website</span>
@@ -144,7 +145,7 @@ const architects = [
           >
             <div class="splide__track">
               <ul class="splide__list">
-                {architect.images.map((image) => (
+                {restorer.images.map((image) => (
                   <li class="splide__slide">
                     <img src={image} alt="" class="object-cover w-full h-96" />
                   </li>
