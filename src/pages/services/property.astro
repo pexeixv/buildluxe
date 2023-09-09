@@ -1,0 +1,196 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getImage, Image } from "astro:assets";
+import propertyManagement from "@assets/property-management.jpg";
+import Button from "@components/Button.astro";
+import { Icon } from "astro-icon";
+const PropertyManagement = await getImage({
+  src: propertyManagement,
+  format: "webp",
+  height: 400,
+  width: 800,
+});
+const properties = [
+  {
+    name: "Beachfront Villa",
+    location: "Calangute, Goa",
+    address: "123 Beachside Road<br>Seaside Paradise",
+    price: "1.80 Cr",
+    images: [
+      "https://images.pexels.com/photos/18165273/pexels-photo-18165273.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/17963821/pexels-photo-17963821/free-photo-of-nature-summer-garden-leaf.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/18015250/pexels-photo-18015250/free-photo-of-the-tallest-stone-sculpture-in-europe.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
+  },
+  {
+    name: "Riverside Cottage",
+    location: "Panaji, Goa",
+    address: "456 Riverside Lane<br>Tranquil Waters",
+    price: "80 Lac",
+    images: [
+      "https://images.pexels.com/photos/18165273/pexels-photo-18165273.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/17963821/pexels-photo-17963821/free-photo-of-nature-summer-garden-leaf.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/18015250/pexels-photo-18015250/free-photo-of-the-tallest-stone-sculpture-in-europe.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
+  },
+  {
+    name: "Seaside Bungalow",
+    location: "Palolem, Goa",
+    address: "789 Seaside Drive<br>Sandy Shores",
+    price: "1.50 Cr",
+    images: [
+      "https://images.pexels.com/photos/18165273/pexels-photo-18165273.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/17963821/pexels-photo-17963821/free-photo-of-nature-summer-garden-leaf.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/18015250/pexels-photo-18015250/free-photo-of-the-tallest-stone-sculpture-in-europe.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
+  },
+  {
+    name: "Hillside Retreat",
+    location: "Assagao, Goa",
+    address: "101 Hillview Road<br>Green Hills",
+    price: "1.20 Cr",
+    images: [
+      "https://images.pexels.com/photos/18165273/pexels-photo-18165273.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/17963821/pexels-photo-17963821/free-photo-of-nature-summer-garden-leaf.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/18015250/pexels-photo-18015250/free-photo-of-the-tallest-stone-sculpture-in-europe.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
+  },
+  {
+    name: "Luxury Villa with a View",
+    location: "Dona Paula, Goa",
+    address: "25 Scenic Avenue<br>Ocean Vista",
+    price: "2.50 Cr",
+    images: [
+      "https://images.pexels.com/photos/18165273/pexels-photo-18165273.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/17963821/pexels-photo-17963821/free-photo-of-nature-summer-garden-leaf.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/18015250/pexels-photo-18015250/free-photo-of-the-tallest-stone-sculpture-in-europe.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
+  },
+  {
+    name: "Cozy Apartment",
+    location: "Anjuna, Goa",
+    address: "42 Main Street<br>Beachside Bliss",
+    price: "70 Lac",
+    images: [
+      "https://images.pexels.com/photos/18165273/pexels-photo-18165273.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/17963821/pexels-photo-17963821/free-photo-of-nature-summer-garden-leaf.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/18015250/pexels-photo-18015250/free-photo-of-the-tallest-stone-sculpture-in-europe.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
+  },
+  {
+    name: "Beachfront Condo",
+    location: "Candolim, Goa",
+    address: "75 Beachside Avenue<br>Sea Breeze",
+    price: "1.60 Cr",
+    images: [
+      "https://images.pexels.com/photos/18165273/pexels-photo-18165273.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/17963821/pexels-photo-17963821/free-photo-of-nature-summer-garden-leaf.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/18015250/pexels-photo-18015250/free-photo-of-the-tallest-stone-sculpture-in-europe.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
+  },
+  {
+    name: "Village House",
+    location: "Siolim, Goa",
+    address: "10 Village Lane<br>Rural Retreat",
+    price: "55 Lac",
+    images: [
+      "https://images.pexels.com/photos/18165273/pexels-photo-18165273.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/17963821/pexels-photo-17963821/free-photo-of-nature-summer-garden-leaf.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/18015250/pexels-photo-18015250/free-photo-of-the-tallest-stone-sculpture-in-europe.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
+  },
+  {
+    name: "Tropical Oasis",
+    location: "Morjim, Goa",
+    address: "5 Oasis Road<br>Sunshine Haven",
+    price: "90 Lac",
+    images: [
+      "https://images.pexels.com/photos/18165273/pexels-photo-18165273.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/17963821/pexels-photo-17963821/free-photo-of-nature-summer-garden-leaf.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/18015250/pexels-photo-18015250/free-photo-of-the-tallest-stone-sculpture-in-europe.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
+  },
+];
+---
+
+<BaseLayout title="Property Management - Buildluxe">
+  <section
+    class="bg-cover bg-no-repeat bg-center relative"
+    style=`background-image:url(${PropertyManagement.src})`
+  >
+    <div class="h-full w-full bg-black/30">
+      <div
+        class="container mx-auto px-5 py-10 lg:py-20 min-h-[50vh] lg:min-h-[70vh] pb-28 flex items-center justify-center"
+      >
+        <h1
+          class="text-white text-balance text-center uppercase drop-shadow-4xl"
+        >
+          <p class="font-black">Property</p>
+          <p class="font-thin">Management</p>
+        </h1>
+      </div>
+    </div>
+  </section>
+  <section class="bg-neutral-50">
+    <div
+      class="container mx-auto px-5 py-10 lg:py-20 grid lg:grid-cols-2 gap-8 lg:gap-16"
+    >
+      {
+        properties.map((property, i) => (
+          <div class="container mx-auto flex max-lg:flex-col mt-12 lg:flex-row bg-white rounded shadow-md">
+            <div class="lg:w-1/2">
+              <section
+                id="image-carousel"
+                class={`splide splide-${i} !p-0`}
+                aria-label="Beautiful Images"
+              >
+                <div class="splide__track">
+                  <ul class="splide__list">
+                    {property.images.map((image) => (
+                      <li class="splide__slide">
+                        <img
+                          src={image}
+                          alt=""
+                          class="object-cover w-full h-96"
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </section>
+            </div>
+            <div class="lg:w-1/2 p-4 flex flex-col">
+              <h2 class="">{property.name}</h2>
+
+              <div class="flex">
+                <Icon name="mdi:location" height={20} class="relative top-1" />
+                <span class="mt-2 text-lg font-bold">{property.location}</span>
+              </div>
+              <div class="mt-8">
+                <Fragment set:html={property.address} />
+              </div>
+              <div class="flex-1 items-end flex">
+                <span class="mr-1 text-lg">₹</span>
+                <span class="text-3xl">{property.price}</span>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+  <script>
+    import Splide from "@splidejs/splide";
+    import "@splidejs/splide/css";
+    import "@splidejs/splide/css/sea-green";
+    [...Array(9).keys()].forEach((i) =>
+      new Splide(`.splide-${i}`, {
+        pagination: false,
+        arrows: false,
+        type: "loop",
+        autoplay: true,
+        interval: 1500,
+      }).mount()
+    );
+  </script>
+</BaseLayout>

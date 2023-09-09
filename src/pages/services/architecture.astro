@@ -106,54 +106,60 @@ const architects = [
 
   {
     architects.map((architect, i) => (
-      <div class="container mx-auto px-5 py-10 lg:py-20 flex max-lg:flex-col gap-8 mt-12 lg:even:flex-row-reverse">
-        <div class="lg:w-1/2">
-          <img
-            src={architect.image}
-            alt=""
-            class="h-32 aspect-square rounded-md"
-          />
-          <h2 class="mt-4">{architect.name}</h2>
-          <p class="mt-2 max-w-xl">{architect.description}</p>
-          <div class="flex items-end gap-2 mt-8">
-            {architect.email && (
-              <Button
-                classes="flex items-center gap-2 justify-center"
-                link={`mailto:${architect.email}`}
-              >
-                <Icon name="mdi:email" height={25} />
-                <span>Email</span>
-              </Button>
-            )}
-            {architect.website && (
-              <Button
-                classes="flex items-center gap-2 justify-center"
-                link={architect.website}
-              >
-                <Icon name="mdi:internet" height={25} />
-                <span>Website</span>
-              </Button>
-            )}
+      <section class="even:bg-neutral-50">
+        <div class="container mx-auto px-5 py-10 lg:py-20 flex max-lg:flex-col gap-8 mt-12 lg:even:flex-row-reverse">
+          <div class="lg:w-1/2">
+            <img
+              src={architect.image}
+              alt=""
+              class="h-32 aspect-square rounded-md"
+            />
+            <h2 class="mt-4">{architect.name}</h2>
+            <p class="mt-2 max-w-xl">{architect.description}</p>
+            <div class="flex items-end gap-2 mt-8">
+              {architect.email && (
+                <Button
+                  classes="flex items-center gap-2 justify-center"
+                  link={`mailto:${architect.email}`}
+                >
+                  <Icon name="mdi:email" height={25} />
+                  <span>Email</span>
+                </Button>
+              )}
+              {architect.website && (
+                <Button
+                  classes="flex items-center gap-2 justify-center"
+                  link={architect.website}
+                >
+                  <Icon name="mdi:internet" height={25} />
+                  <span>Website</span>
+                </Button>
+              )}
+            </div>
+          </div>
+          <div class="lg:w-1/2">
+            <section
+              id="image-carousel"
+              class={`splide splide-${i} !p-0`}
+              aria-label="Beautiful Images"
+            >
+              <div class="splide__track">
+                <ul class="splide__list">
+                  {architect.images.map((image) => (
+                    <li class="splide__slide">
+                      <img
+                        src={image}
+                        alt=""
+                        class="object-cover w-full h-96"
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
           </div>
         </div>
-        <div class="lg:w-1/2">
-          <section
-            id="image-carousel"
-            class={`splide splide-${i} !p-0`}
-            aria-label="Beautiful Images"
-          >
-            <div class="splide__track">
-              <ul class="splide__list">
-                {architect.images.map((image) => (
-                  <li class="splide__slide">
-                    <img src={image} alt="" class="object-cover w-full h-96" />
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </section>
-        </div>
-      </div>
+      </section>
     ))
   }
 
