@@ -26,55 +26,60 @@ const menuItems: IMenuItems = [
 
 <header
   id="header"
-  class="text-white fixed font-bold tracking-wider top-0 left-0 w-full z-50 transition-colors duration-1000 delay-100"
+  class="text-white fixed font-bold tracking-wider top-0 left-0 w-full z-50 group/header transition-colors duration-1000 delay-100"
 >
   <div
-    class="container mx-auto px-5 py-4 flex flex-col lg:flex-row items-center justify-between"
+    id="azulejos"
+    class="w-full h-full bg-repeat bg-center group-[.bg-black]/header:bg-azulejos transition-all duration-1000 delay-100"
   >
-    <div class="flex items-center justify-between w-full">
-      <a href="/" class="text-white text-xl items-center hidden not-flex">
-        <span class="font-thin">Build</span>
-        <span class="font-black">luxe</span>
-      </a>
-      <a href="/">
-        <InlineSVG
-          path="logo"
-          class="h-16 text-white grid place-items-center"
-        />
-      </a>
-      <button class="lg:hidden w-8 h-8" id="menu-button">
-        <Icon name="mdi:hamburger-menu" id="open-menu" />
-        <Icon name="mdi:close" id="close-menu" class="hidden" />
-      </button>
-    </div>
-
-    <nav
-      id="menu"
-      class="uppercase hidden lg:flex gap-8 py-4 lg:py-0 max-lg:bg-black max-lg:w-full max-lg:relative max-lg:top-4"
+    <div
+      class="container mx-auto px-5 py-4 flex flex-col lg:flex-row items-center justify-between"
     >
-      <ul class="flex flex-col lg:flex-row items-center gap-8 w-full">
-        {
-          menuItems.map((item: IMenuItem | IMenuItemGroup) => {
-            if ("list" in item) return <MenuItemGroup {item} />;
-            return <MenuItem {item} />;
-          })
-        }
+      <div class="flex items-center justify-between w-full">
+        <a href="/" class="text-white text-xl items-center hidden not-flex">
+          <span class="font-thin">Build</span>
+          <span class="font-black">luxe</span>
+        </a>
+        <a href="/">
+          <InlineSVG
+            path="logo"
+            class="h-16 text-white grid place-items-center"
+          />
+        </a>
+        <button class="lg:hidden w-8 h-8" id="menu-button">
+          <Icon name="mdi:hamburger-menu" id="open-menu" />
+          <Icon name="mdi:close" id="close-menu" class="hidden" />
+        </button>
+      </div>
+
+      <nav
+        id="menu"
+        class="uppercase hidden lg:flex gap-8 py-4 lg:py-0 max-lg:bg-black max-lg:w-full max-lg:relative max-lg:top-4 items-center"
+      >
+        <ul class="flex flex-col lg:flex-row items-center gap-8 w-full">
+          {
+            menuItems.map((item: IMenuItem | IMenuItemGroup) => {
+              if ("list" in item) return <MenuItemGroup {item} />;
+              return <MenuItem {item} />;
+            })
+          }
+          <Button
+            variant="secondary"
+            link="/contact"
+            classes="lg:hidden block font-catchye capitalize text-xl"
+          >
+            Contact
+          </Button>
+        </ul>
         <Button
           variant="secondary"
           link="/contact"
-          classes="lg:hidden block font-catchye capitalize text-xl"
+          classes="lg:block hidden font-catchye capitalize text-xl"
         >
           Contact
         </Button>
-      </ul>
-      <Button
-        variant="secondary"
-        link="/contact"
-        classes="lg:block hidden font-catchye capitalize text-xl"
-      >
-        Contact
-      </Button>
-    </nav>
+      </nav>
+    </div>
   </div>
 </header>
 
