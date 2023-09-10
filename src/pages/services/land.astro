@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import LandForm from "@components/svelte/LandForm.svelte";
 import Button from "@components/Button.astro";
 import { getImage, Image } from "astro:assets";
 import Address from "@components/Address.astro";
@@ -56,56 +57,7 @@ const LandService = await getImage({
           form.
         </p>
       </div>
-      <form
-        action=""
-        class="mt-12 lg:mt-28 w-full flex items-center flex-col gap-8"
-      >
-        <div class="w-full gap-8 flex max-lg:flex-col">
-          <input
-            class="focus-within:outline-none w-full bg-transparent border-b-4 px-4 py-2"
-            name="name"
-            placeholder="Name *"
-            type="text"
-          />
-          <input
-            class="focus-within:outline-none w-full bg-transparent border-b-4 px-4 py-2"
-            name="email"
-            placeholder="Email *"
-            type="email"
-          />
-        </div>
-        <div class="w-full gap-8 flex max-lg:flex-col">
-          <input
-            class="focus-within:outline-none w-full bg-transparent border-b-4 px-4 py-2"
-            name="phone"
-            placeholder="Phone *"
-            type="text"
-          />
-          <input
-            class="focus-within:outline-none w-full bg-transparent border-b-4 px-4 py-2"
-            name="type"
-            placeholder="Land Type"
-            type="text"
-          />
-        </div>
-
-        <div class="w-full gap-8 flex max-lg:flex-col">
-          <input
-            class="focus-within:outline-none w-full bg-transparent border-b-4 px-4 py-2"
-            name="location"
-            placeholder="Prefered Location"
-            type="text"
-          />
-          <input
-            class="focus-within:outline-none w-full bg-transparent border-b-4 px-4 py-2"
-            name="size"
-            placeholder="Land Size"
-            type="text"
-          />
-        </div>
-
-        <Button classes="mt-12" variant="primary" type="submit">Submit</Button>
-      </form>
+      <LandForm client:idle />
     </div>
   </section>
   <Address />
