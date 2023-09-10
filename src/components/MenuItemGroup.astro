@@ -24,7 +24,7 @@ const { item } = Astro.props;
     <span class="h-5 w-5"><Icon name="mdi:chevron-down" /></span>
   </li>
   <ul
-    class="hidden lg:group-hover:flex lg:absolute flex-col pt-3 text-white/80 lg:text-black lg:py-3 px-4 rounded lg:left-1/2 lg:-translate-x-1/2 gap-4 lg:gap-2 text-center lg:bg-white max-lg:text-sm max-lg:opacity-80"
+    class="hidden lg:group-hover:flex lg:absolute flex-col pt-3 text-white/80 lg:text-black lg:py-3 px-4 rounded lg:right-0 gap-4 lg:gap-2 text-center lg:text-right lg:bg-white max-lg:text-sm max-lg:opacity-80"
   >
     {item.list.map((li) => <MenuItem item={li} />)}
   </ul>

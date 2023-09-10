@@ -17,7 +17,7 @@ const menuItems: IMenuItems = [
       { label: "Architectural Design", link: "/services/architecture" },
       { label: "Land Service", link: "/services/land" },
       { label: "Property Management", link: "/services/property" },
-      { label: "Restoration of Heritage Homes", link: "/services/restoration" },
+      { label: "Restoring Heritage", link: "/services/restoration" },
     ],
   },
 ];
@@ -54,7 +54,7 @@ const menuItems: IMenuItems = [
 
       <nav
         id="menu"
-        class="uppercase hidden lg:flex gap-8 py-4 lg:py-0 max-lg:bg-black max-lg:w-full max-lg:relative max-lg:top-4 items-center"
+        class="uppercase hidden lg:flex gap-8 py-4 lg:py-0 max-lg:bg-black group-[.bg-black]/header:max-lg:bg-transparent max-lg:w-full max-lg:relative max-lg:top-4 items-center"
       >
         <ul class="flex flex-col lg:flex-row items-center gap-8 w-full">
           {
@@ -87,6 +87,11 @@ const menuItems: IMenuItems = [
   const openMenu = document.querySelector("#open-menu");
   const closeMenu = document.querySelector("#close-menu");
   const menu = document.querySelector("#menu");
+  const menuItems = document.querySelectorAll("#menu a");
+
+  menuItems.forEach((item) => {
+    item.addEventListener("click", () => toggleMenu());
+  });
 
   const header = document.querySelector("#header");
   const menuButton = document.querySelector("#menu-button");
