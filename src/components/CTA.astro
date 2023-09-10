@@ -1,6 +1,7 @@
 ---
 import { getImage, Image } from "astro:assets";
 import Button from "@components/Button.astro";
+import CTAForm from "@components/svelte/CTAForm.svelte";
 import contact from "@assets/contact.jpg";
 const Contact = await getImage({
   src: contact,
@@ -25,33 +26,6 @@ const Contact = await getImage({
         dream into a reality.
       </p>
     </div>
-    <form action="" class="mt-12 lg:mt-28 w-full flex items-center flex-col">
-      <div class="w-full gap-8 flex max-lg:flex-col">
-        <input
-          class="focus-within:outline-none w-full bg-transparent border-b-4 px-4 py-2"
-          name="name"
-          placeholder="Name *"
-          type="text"
-        />
-        <input
-          class="focus-within:outline-none w-full bg-transparent border-b-4 px-4 py-2"
-          name="email"
-          placeholder="Email *"
-          type="email"
-        />
-        <input
-          class="focus-within:outline-none w-full bg-transparent border-b-4 px-4 py-2"
-          name="phone"
-          placeholder="Phone *"
-          type="text"
-        />
-      </div>
-      <textarea
-        class="resize-none mt-8 focus-within:outline-none w-full bg-transparent border-b-4 px-4 py-2"
-        name="message"
-        placeholder="Message *"
-        rows="7"></textarea>
-      <Button classes="mt-12" variant="secondary" type="submit">Submit</Button>
-    </form>
+    <CTAForm client:idle />
   </div>
 </section>
