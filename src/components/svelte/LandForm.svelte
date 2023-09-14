@@ -8,9 +8,6 @@
     let location = ''
     let landSize = ''
 
-
-    // https://docs.google.com/forms/d/e/1FAIpQLSc5Gn-vmWEeVBWzZiDf9EJp7ev5eh5Ha2Zk76MXhS22C5N9rQ/viewform?usp=pp_url&entry.1467145437=Gavin&entry.1483725286=email@email.com&entry.709657836=8888253992&entry.887597513=Hilly&entry.674208994=Vascu&entry.900513713=2acres
-
     const baseUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSc5Gn-vmWEeVBWzZiDf9EJp7ev5eh5Ha2Zk76MXhS22C5N9rQ/formResponse?'
 
     const handleReset = () =>{
