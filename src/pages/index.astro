@@ -73,11 +73,23 @@ const testimonials = [
   }  
 ]
 
+import Logo from '@assets/logo-white.png'
 
 ---
 
 <BaseLayout title="Buildluxe">
+  <section id="curtain" class="w-screen h-screen fixed z-50 bg-black text-white grid items-center  bg-azulejos bg-repeat bg-fill">
+    <div class="container mx-auto  flex items-center flex-col justify-center gap-8 w-fit h-fit">
+      <span id="logo">
+        <img src={Logo.src} alt="" class="h-12">
+      </span>
+    <span class="w-full max-w-3xl bg-neutral-500 h-2">
+      <div id="progress" class="w-0 bg-neutral-200 h-full" ></div>
+    </span>
+    </div>
+  </section>
   <section
+    id="hero"
     class="bg-cover bg-no-repeat bg-center relative"
     style=`background-image:url(${hero.src})`
   >
@@ -86,8 +98,8 @@ const testimonials = [
         class="relative container mx-auto px-5 py-10 lg:py-20 min-h-screen grid place-items-center"
       >
         <h1 class="text-white text-balance text-center  drop-shadow-4xl">
-          <p class="font-thin uppercase text-2xl md:text-3xl lg:text-5xl">Designing your Dream</p>
-          <p class="font-catchye font-thin text-brand text-5xl md:text-6xl lg:text-8xl mt-4">"Crafting Beautiful Homes"</p>
+          <p id="line-1" class="font-thin uppercase text-2xl md:text-3xl lg:text-5xl">Designing your Dream</p>
+          <p id="line-2" class="font-catchye font-thin text-brand text-5xl md:text-6xl lg:text-8xl mt-4">"Crafting Beautiful Homes"</p>
         </h1>
       </div>
     </div>
@@ -96,6 +108,18 @@ const testimonials = [
     >
     </div>
   </section>
+
+  <script>
+    import gsap from 'gsap'
+    const heroTl = gsap.timeline()
+    heroTl
+    .to('#curtain #progress',{width: '100%', duration: 2})
+    .to('#curtain #logo',{scale: 1.1, duration: 1}, '-=1')
+    .to('#curtain', {y: '-100%'}, '-=0.3')
+    .from('#hero', {autoAlpha: 0, duration: 1})
+    .from('#hero p',{autoAlpha: 0, y: 50, stagger: 1})
+    .from('header',{autoAlpha: 0, y: -100})
+  </script>
 
   <section>
     <div
