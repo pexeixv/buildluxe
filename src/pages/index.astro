@@ -112,13 +112,19 @@ import Logo from '@assets/logo-white.png'
   <script>
     import gsap from 'gsap'
     const heroTl = gsap.timeline()
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
     heroTl
+    .set('body', {css: {overflow: 'hidden'}})
     .to('#curtain #progress',{width: '100%', duration: 2})
     .to('#curtain #logo',{scale: 1.1, duration: 1}, '-=1')
     .to('#curtain', {y: '-100%'}, '-=0.3')
     .from('#hero', {autoAlpha: 0, duration: 1})
     .from('#hero p',{autoAlpha: 0, y: 50, stagger: 1})
     .from('header',{autoAlpha: 0, y: -100})
+    .set('body', {css: {overflow: 'auto'}})
   </script>
 
   <section>

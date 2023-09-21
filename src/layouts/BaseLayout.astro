@@ -8,17 +8,19 @@ import "@/tailwind.css";
 const { title } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" />
-    <ViewTransitions />
+    <!-- <ViewTransitions /> -->
   </head>
 
-  <body class="min-h-screen flex flex-col font-jakarta">
+  <body
+    class="min-h-screen flex flex-col font-jakarta scrollbar-thin scrollbar-thumb-brand scrollbar-track-brand/30"
+  >
     <TwSizeIndicator />
     <Header />
     <main class="flex-1"><slot /></main>

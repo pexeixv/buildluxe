@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
-    "@types/node": "^20.5.9"
+    "@types/node": "^20.5.9",
+    "tailwind-scrollbar": "^3.0.5"
   }
 }
