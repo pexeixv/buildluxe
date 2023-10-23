@@ -1,0 +1,45 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Button from "@components/Button.astro";
+import Icon from "astro-icon";
+const { Content } = Astro.props;
+const { frontmatter } = Astro.props;
+const { name, designation, image, phone, website } = frontmatter;
+---
+
+<BaseLayout title={name} darkHeader>
+  <section class="pt-28">
+    <div class="container mx-auto px-5 py-10 lg:py-20">
+      <div class="mx-auto grid lg:grid-cols-2 gap-20">
+        <img src={image} alt={name} class="w-full" />
+        <div>
+          <h1>{name}</h1>
+          <p class="mt-2 text-lg">{designation}</p>
+          <div class="mt-4 flex items-center flex-wrap gap-4">
+            {
+              phone && (
+                <Button
+                  classes="flex items-center gap-2 justify-center"
+                  link={phone}
+                >
+                  <Icon name="mdi:internet" height={25} />
+                  <span>Phone</span>
+                </Button>
+              )
+            }{
+              website && (
+                <Button
+                  classes="flex items-center gap-2 justify-center"
+                  link={website}
+                >
+                  <Icon name="mdi:internet" height={25} />
+                  <span>Website</span>
+                </Button>
+              )
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

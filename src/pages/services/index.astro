@@ -39,6 +39,13 @@ const PropertyManagement = await getImage({
   height: 400,
   width: 800,
 });
+import legal from "@assets/legal.jpg";
+const Legal = await getImage({
+  src: legal,
+  format: "webp",
+  height: 400,
+  width: 800,
+});
 import Consultation from "@components/Consultation.astro";
 import CTA from "@components/CTA.astro";
 import Button from "@components/Button.astro";
@@ -65,7 +72,7 @@ const services = [
     description:
       "Buying land in Goa can be a daunting task, but our land acquisition team can take care of everything for you. From finding the ideal plot to advising on the different purchase options.",
     icon: "mdi:map",
-    href: "#",
+    href: "/services/land",
   },
   {
     image: PropertyManagement,
@@ -73,15 +80,23 @@ const services = [
     description:
       "Preserving the key heritage elements, with skilled architects and designers who specialize in heritage restoration and modern luxury design. Retaining the essence of the original Portuguese architecture while seamlessly incorporating contemporary luxury elements. Integrating eco-friendly features and modern amenities without compromising the heritage integrity.",
     icon: "mdi:paper",
-    href: "#",
+    href: "/services/property",
   },
+  // {
+  //   image: PortugueseHouse,
+  //   title: "Restoration of heritage homes",
+  //   description:
+  //     "Preserving the key heritage elements, with skilled architects and designers who specialize in heritage restoration and modern luxury design. Retaining the essence of the original Portuguese architecture while seamlessly incorporating contemporary luxury elements. Integrating eco-friendly features and modern amenities without compromising the heritage integrity.",
+  //   icon: "mdi:restore",
+  //   href: "/services/restoration",
+  // },
   {
-    image: PortugueseHouse,
-    title: "Restoration of heritage homes",
+    image: Legal,
+    title: "Legalities",
     description:
-      "Preserving the key heritage elements, with skilled architects and designers who specialize in heritage restoration and modern luxury design. Retaining the essence of the original Portuguese architecture while seamlessly incorporating contemporary luxury elements. Integrating eco-friendly features and modern amenities without compromising the heritage integrity.",
-    icon: "mdi:restore",
-    href: "#",
+      "Navigating the intricate legal aspects of property and homeownership can be a complex journey. Our legal team specializes in addressing the legalities surrounding property and homes in Goa, ensuring that you are well-informed and protected throughout your real estate endeavors. From property acquisition and documentation to compliance with local regulations and laws, our legal experts are dedicated to providing you with the guidance and support needed to make sound legal decisions in the realm of property and home ownership.",
+    icon: "mdi:legal",
+    href: "/services/legal",
   },
 ];
 ---

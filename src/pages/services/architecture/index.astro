@@ -1,0 +1,181 @@
+---
+import { getImage, Image } from "astro:assets";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import architecturalDesign from "@assets/architectural-design.jpg";
+const ArchitecturalDesign = await getImage({
+  src: architecturalDesign,
+  format: "webp",
+  height: 400,
+  width: 800,
+});
+import Consultation from "@components/Consultation.astro";
+import CTA from "@components/CTA.astro";
+import Button from "@components/Button.astro";
+import { Icon } from "astro-icon";
+
+const architects = [
+  {
+    name: "Dean D'Cruz",
+    image: "/people/dean-dcruz.jpg",
+    description:
+      "Dean D'Cruz is the Co-founder and Principal Architect of Mozaic, an architecture and design firm in Goa, known for his work in environmental architecture and sustainability. He has designed a wide range of projects, including houses, hotels, housing complexes, institutions, and more, and is actively involved in promoting architectural and planning standards through workshops and seminars. Dean D'Cruz emphasizes the importance of responding to contemporary needs while respecting traditional craftsmanship and connecting with nature in his architectural approach. He has been recognized with multiple awards and focuses on improving academic standards and environmental considerations in architecture and planning.",
+    images: [
+      "https://images.pexels.com/photos/18165273/pexels-photo-18165273.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/17963821/pexels-photo-17963821/free-photo-of-nature-summer-garden-leaf.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/18015250/pexels-photo-18015250/free-photo-of-the-tallest-stone-sculpture-in-europe.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
+    website: "//mozaic.in",
+    phone: "9922846528",
+  },
+  {
+    name: "Harsh Patel",
+    image: "/people/harsh-patel.jpg",
+    description:
+      "After graduating, he secured a full scholarship from Pennsylvania State University, which enabled him to explore the concept of 'play' through research and extensive global travels. During his travels, he had the chance to work with Ai Weiwei in Beijing and was deeply inspired by the power of simplicity and clarity in design. This experience, alongside a desire for a unique workplace, led him and his partner to establish Playgroup Studio in Goa. His architectural philosophy centers on finding a balance between self-imposed design rules and creative freedom, fostering a sense of 'play' within the language of architecture. While he values innovation, he dreams of designing a museum of world architecture. Notably, one of his significant projects is the Horizon school campus in Calicut, where he aimed to create a space that served as a laboratory for ideas, seamlessly integrating educational concepts into architectural design.",
+    images: [
+      "https://images.pexels.com/photos/18165273/pexels-photo-18165273.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/17963821/pexels-photo-17963821/free-photo-of-nature-summer-garden-leaf.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/18015250/pexels-photo-18015250/free-photo-of-the-tallest-stone-sculpture-in-europe.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
+    email: "connect@playgroupstudio.com",
+    website: "playgroupstudio.com",
+    phone: "8390644466",
+  },
+];
+---
+
+<BaseLayout title="Architectural Design - Buildluxe">
+  <section
+    class="bg-cover bg-no-repeat bg-center relative"
+    style=`background-image:url(${ArchitecturalDesign.src})`
+  >
+    <div class="h-full w-full bg-black/30">
+      <div
+        class="container mx-auto px-5 py-10 lg:py-20 min-h-[40vh] lg:min-h-[70vh] flex items-center justify-center"
+      >
+        <h1
+          class="text-white text-balance text-center uppercase drop-shadow-4xl"
+        >
+          <p class="font-black">Architecture</p>
+          <p class="font-thin">& design</p>
+        </h1>
+      </div>
+    </div>
+  </section>
+  <section class="px-4 lg:px-12 bg-neutral-100">
+    <div
+      class="container mx-auto p-8 lg:p-16 bg-white shadow-md relative bottom-12 lg:bottom-28 grid lg:grid-cols-2 gap-4 lg:gap-28"
+    >
+      <h2 class="uppercase">
+        <p class="font-thin">Trusted architects</p>
+        <p class="font-black">in Goa</p>
+      </h2>
+      <div class="space-y-2">
+        <p>
+          Utilizing the latest in design, materials, and smart home integration,
+          we create functional villas with convenience and style.
+        </p>
+        <p>
+          With years of experience in creating award-winning designs, our
+          architectural team has left an incredible mark on Goa and beyond.
+        </p>
+        <p>
+          Goa is among the top biodiversity hotspots in the world. It is
+          expected of every architect and/or professional from the construction
+          industry to tread cautiously when developing projects in Goa. It means
+          that one has to imbibe sensitivity in their approach. Like with every
+          context, Goa also has a natural and built heritage that needs to be
+          respected. At the same time the context offers possibilities of
+          reinterpretation but is not as easy as “let’s copy the Portuguese
+          style.”
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {
+    architects.map((architect, i) => (
+      <section class="even:bg-neutral-50">
+        <div class="container mx-auto px-5 py-10 lg:py-20 flex max-lg:flex-col gap-8 mt-12 lg:even:flex-row-reverse">
+          <div class="lg:w-1/2">
+            <img
+              src={architect.image}
+              alt=""
+              class="h-32 aspect-square rounded-md object-cover"
+            />
+            <h2 class="mt-4">{architect.name}</h2>
+            <p class="mt-2 max-w-xl">{architect.description}</p>
+            <div class="flex items-end gap-2 mt-8">
+              {architect.email && (
+                <Button
+                  classes="flex items-center gap-2 justify-center"
+                  link={`mailto:${architect.email}`}
+                >
+                  <Icon name="mdi:email" height={25} />
+                  <span>Email</span>
+                </Button>
+              )}
+              {architect.website && (
+                <Button
+                  classes="flex items-center gap-2 justify-center"
+                  link={architect.website}
+                >
+                  <Icon name="mdi:internet" height={25} />
+                  <span>Website</span>
+                </Button>
+              )}
+              {architect.phone && (
+                <Button
+                  classes="flex items-center gap-2 justify-center"
+                  link={architect.phone}
+                >
+                  <Icon name="mdi:phone" height={25} />
+                  <span>Phone</span>
+                </Button>
+              )}
+            </div>
+          </div>
+          <div class="lg:w-1/2">
+            <section
+              id="image-carousel"
+              class={`splide splide-${i} !p-0`}
+              aria-label="Beautiful Images"
+            >
+              <div class="splide__track">
+                <ul class="splide__list">
+                  {architect.images.map((image) => (
+                    <li class="splide__slide">
+                      <img
+                        src={image}
+                        alt=""
+                        class="object-cover w-full h-96"
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  <Consultation />
+  <CTA />
+
+  <script>
+    import Splide from "@splidejs/splide";
+    [0, 1].forEach((i) =>
+      new Splide(`.splide-${i}`, {
+        pagination: false,
+        arrows: false,
+        type: "loop",
+        autoplay: true,
+        interval: 1500,
+      }).mount()
+    );
+    import "@splidejs/splide/css";
+    import "@splidejs/splide/css/sea-green";
+  </script>
+</BaseLayout>

@@ -1,0 +1,48 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getImage, Image } from "astro:assets";
+import Button from "@components/Button.astro";
+import { Icon } from "astro-icon";
+import { Content } from "./liel-monteiro.md";
+import legal from "@assets/legal.jpg";
+const Legal = await getImage({
+  src: legal,
+  format: "webp",
+  height: 400,
+  width: 800,
+});
+---
+
+<BaseLayout title="Property Management - Buildluxe">
+  <section
+    class="bg-cover bg-no-repeat bg-center relative"
+    style=`background-image:url(${Legal.src})`
+  >
+    <div class="h-full w-full bg-black/50">
+      <div
+        class="container mx-auto px-5 py-10 lg:py-20 min-h-[50vh] lg:min-h-[70vh] pb-28 flex items-center justify-center"
+      >
+        <h1
+          class="text-white text-balance text-center uppercase drop-shadow-4xl"
+        >
+          <p class="font-black">Legalities</p>
+        </h1>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div
+      class="container mx-auto px-5 py-10 lg:py-20 flex flex-col items-center"
+    >
+      <img
+        src="/people/liel-monteiro.jpg"
+        alt="Adv. Liel Monteiro"
+        class="rounded-xl h-96"
+      />
+      <h2 class="mt-4">Adv. Liel Monteiro</h2>
+      <div class="prose mx-auto py-20">
+        <Content />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
