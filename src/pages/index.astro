@@ -2,6 +2,7 @@
 import { getImage, Image } from "astro:assets";
 import Button from "@components/Button.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import PopUpForm from "@components/svelte/PopUpForm.svelte";
 import heroSrc from "@assets/hero-image.jpg";
 import about from "@assets/about.jpg";
 const hero = await getImage({ src: heroSrc, format: "webp", width: 1600, height: 900 });
@@ -153,7 +154,7 @@ import Logo from '@assets/logo-white.png'
       <div class="mt-12 grid grid-cols-2" style="grid-auto-rows: 1fr;">
         {
           services.map((service,index)=>(
-            <div class:list={["group bg-cover bg-no-repeat bg-center text-white text-center", {'col-span-2': (services.length%2 && !index) }]} style=`background-image:url('${service.image.src}')`>
+            <div class:list={["group bg-cover bg-no-repeat bg-center text-white text-center max-lg:col-span-2", {'col-span-2': (services.length%2 && !index) }]} style=`background-image:url('${service.image.src}')`>
               <div class="w-full h-full bg-black/50 flex flex-col items-center justify-center p-16 lg:opacity-0 lg:pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 delay-100">
                 <h3 class="first">{service.title}</h3>
                 <p class="max-lg:hidden mt-4 text-lg max-w-md">{service.description}</p>
@@ -243,6 +244,50 @@ import Logo from '@assets/logo-white.png'
 <Partners />
 
 <CTA />
+
+<section
+    class="place-items-center fixed top-0 left-0 z-50 min-h-screen w-screen backdrop-blur-sm p-4 lg:p-8 hidden"
+    id="popupform"
+  >
+    <div class="bg-black text-white w-full max-w-4xl p-8 lg:p-16 min-h-[200px]">
+      <div class="flex justify-between">
+        <h2 class="uppercase">
+          <p class="inline font-thin">Let's</p>{" "}
+          <p class="inline font-black mt-1">Chat!</p>
+        </h2>
+        <button id="popupclose">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <PopUpForm client:idle />
+    </div>
+  </section>
+  <script>
+    const form = document.querySelector("#popupform");
+    const close = document.querySelector("#popupclose");
+    close.addEventListener("click", () => form.classList.add("hidden"));
+    const showPopUp = () => {
+      const popupForm = document.getElementById("popupform");
+      if (window.scrollY >= 800 && popupForm.classList.contains("hidden")) {
+        popupForm.classList.remove("hidden");
+        popupForm.classList.add("grid");
+        window.removeEventListener("scroll", showPopUp);
+      }
+    };
+    window.addEventListener("scroll", showPopUp);
+  </script>
 
 
 </BaseLayout>
